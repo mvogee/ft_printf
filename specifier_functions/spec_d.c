@@ -50,7 +50,11 @@ int			spec_d(char *mods, va_list arglist)
 	if (!output)
 		return (0);
 	output = do_precision(output, precision, mods); // make this
+	if (!output)
+		return (0);
 	output = do_minwidth(output, minwidth, mods); // make this
+	if (!output)
+		return (0);
 	retlen = printf_free(output); //make this
-	return (0);
+	return (retlen);
 }
