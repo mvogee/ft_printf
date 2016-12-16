@@ -1,9 +1,10 @@
-NAME = ft_printf
+NAME = libftprintf
 
 SRCS = ft_printf.c \
 		moveto.c	\
 		parse_format.c \
 		checkfor.c	\
+		get_args.c \
 		\
 		specifier_functions/dispatcher.c \
 		specifier_functions/spec_c.c \
@@ -21,15 +22,23 @@ SRCS = ft_printf.c \
 		specifier_functions/spec_up_u.c \
 		specifier_functions/spec_up_x.c \
 		specifier_functions/spec_x.c \
+		specifier_functions/d_args.c \
 		\
 		libft_functions/ft_strsub.c \
 		libft_functions/ft_itoa.c \
 		libft_functions/ft_atoi.c \
+		libft_functions/ft_strlen.c \
+		libft_functions/ft_isascii.c \
+		libft_functions/ft_isalnum.c \
+		libft_functions/ft_isdigit.c \
+		libft_functions/ft_lltoa.c \
+
 
 OBJS = ft_printf.o \
 		moveto.o	\
 		parse_format.o \
 		checkfor.o	\
+		get_args.o \
 		\
 		dispatcher.o \
 		spec_c.o \
@@ -47,10 +56,16 @@ OBJS = ft_printf.o \
 		spec_up_u.o \
 		spec_up_x.o \
 		spec_x.o \
+		d_args.c \
 		\
 		ft_strsub.o \
 		ft_itoa.o \
 		ft_atoi.o \
+		ft_strlen.o \
+		ft_isascii.o \
+		ft_isalnum.o \
+		ft_isdigit.o \
+		ft_lltoa.o \
 
 CC = gcc
 

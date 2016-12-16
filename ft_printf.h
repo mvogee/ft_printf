@@ -12,6 +12,17 @@
 
 typedef int (*t_dispatch_ptr) (char *, va_list);
 
+typedef enum	e_len
+{
+	NONE = 0,
+	HH = 1,
+	H = 2,
+	L = 3,
+	LL = 4,
+	J = 5,
+	Z = 6
+}				t_len;
+
 //ft_printf.c
 int		ft_printf(char *format, ...);
 int		read_format(char *format, va_list arglist);
@@ -27,10 +38,28 @@ int		checkfor_flags(char c);
 int		checkfor_modifiers(char c);
 int		checkfor_all(char c);
 
+//get_formats.c
+int		get_precision(char *mods, va_list arglist);
+int		get_minwidth(char *mods, va_list arglist);
+char	get_pad(char *mods);
+int		get_justify(char *mods);
+int		get_sign(char *mods);
+
+//get args
+int		get_len(char *mods);
+int		make_short(int i);
+char	*h_spec(va_list arglist);
+char	*hh_spec(va_list arglist);
+
 //libft_functions
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_itoa(int n);
 int		ft_atoi(const char *str);
+size_t	ft_strlen(char *str);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isdigit(int c);
+char	*ft_lltoa(long long int n);
 
 //dispatcher
 int 	get_dispatch(char speci);
