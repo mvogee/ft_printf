@@ -49,7 +49,7 @@ int			spec_d(char *mods, va_list arglist)
 	output = get_output(mods, arglist);
 	if (!output)
 		return (0);
-	output = do_precision(output, precision, mods); // make this
+	output = do_precision(output, precision, mods);
 	if (!output)
 		return (0);
 	output = do_minwidth(output, minwidth, mods); // make this

@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*pad_copy(char* original, int sign, int pad, int totallen)
+#include "ft_printf.h"
+
+static  char	*pad_copy(char* original, int sign, int pad, int totallen)
 {
 	char	*ret;
 	int		count;
@@ -29,16 +31,17 @@ char	*pad_copy(char* original, int sign, int pad, int totallen)
 		ret[count] = '0';
 		count++;		
 	}
-	while (*original++)
+	while (*original)
 	{
 		ret[count] = *original;
 		count++;
+		original++;
 	}
 	ret[totallen] = '\0';
 	return (ret);
 }
 
-char	*do_precision(char	*output, int precision)
+char			*do_precision(char	*output, int precision)
 {
 	int		len;
 	int		count;
@@ -54,8 +57,8 @@ char	*do_precision(char	*output, int precision)
 	if (len < precision)
 	{
 		len = precision - len; // how many zeros we will add
-		precision += 1 + minussign; // total lenght to allocate
-		retoutp = pad_copy(output, minusssign, len, precision);
+		precision += minussign; // total lenght to allocate
+		retoutp = pad_copy(output, minussign, len, precision);
 
 	}
 	else

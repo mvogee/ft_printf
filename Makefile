@@ -5,6 +5,7 @@ SRCS = ft_printf.c \
 		parse_format.c \
 		checkfor.c	\
 		get_args.c \
+		do_precision.c \
 		\
 		specifier_functions/dispatcher.c \
 		specifier_functions/spec_c.c \
@@ -32,6 +33,7 @@ SRCS = ft_printf.c \
 		libft_functions/ft_isalnum.c \
 		libft_functions/ft_isdigit.c \
 		libft_functions/ft_lltoa.c \
+		libft_functions/ft_strdup.c \
 
 
 OBJS = ft_printf.o \
@@ -39,6 +41,7 @@ OBJS = ft_printf.o \
 		parse_format.o \
 		checkfor.o	\
 		get_args.o \
+		do_precision.o \
 		\
 		dispatcher.o \
 		spec_c.o \
@@ -66,6 +69,7 @@ OBJS = ft_printf.o \
 		ft_isalnum.o \
 		ft_isdigit.o \
 		ft_lltoa.o \
+		ft_strdup.o \
 
 CC = gcc
 

@@ -51,6 +51,9 @@ int		make_short(int i);
 char	*h_spec(va_list arglist);
 char	*hh_spec(va_list arglist);
 
+//do_precision
+char	*do_precision(char	*output, int precision);
+
 //libft_functions
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_itoa(int n);
@@ -60,6 +63,7 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 char	*ft_lltoa(long long int n);
+char	*ft_strdup(char *str);
 
 //dispatcher
 int 	get_dispatch(char speci);
