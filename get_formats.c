@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+#include <stdio.h>
+// get precision and get minwidth are working
 int		get_precision(char *mods, va_list arglist)
 {
 	int		precision;
@@ -20,9 +21,10 @@ int		get_precision(char *mods, va_list arglist)
 
 	count = 0;
 	precis = NULL;
+	if (!mods)
+		return (0);
 	while (*mods != '.' && *mods)
 		mods++;
-	mods++;
 	if (!*mods)
 		precision = 0;
 	mods++;
@@ -49,6 +51,8 @@ int		get_minwidth(char *mods, va_list arglist)
 
 	count= 0;
 	minw = NULL;
+	if (!mods)
+		return (0);
 	while (ft_isdigit(*mods) != 1 && *mods != '.' && *mods != '*' && *mods)
 		mods++;
 	if (!*mods || *mods == '.')

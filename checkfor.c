@@ -21,10 +21,11 @@ int		checkfor_specifier(char	c)
 
 	count= 0;
 	SPECIFIERS  = "sSpdDioOuUxXcC%";
-	while (SPECIFIERS[count++])
+	while (SPECIFIERS[count])
 	{
 		if (SPECIFIERS[count] == c)
 			return (1);
+		count++;
 	}
 	return (0);
 }
@@ -36,10 +37,11 @@ int		checkfor_flags(char c)
 
 	count = 0;
 	FLAGS  =  "hljz";
-	while (FLAGS[count++])
+	while (FLAGS[count])
 	{
 		if (FLAGS[count] == c)
 			return (1);
+		count++;
 	}
 	return (0);
 }
@@ -51,10 +53,11 @@ int		checkfor_modifiers(char c)
 
 	count = 0;
 	MODIFIERS = ".*#0-+ ";
-	while (MODIFIERS[count++])
+	while (MODIFIERS[count])
 	{
 		if (MODIFIERS[count] == c)
 			return (1);
+		count++;
 	}
 	return (0);
 }
@@ -65,11 +68,26 @@ int		checkfor_all(char c)
 	int count;
 
 	count = 0;
-	ALL_FRMAT_CHARS = "1234567890.*#-+ hljzsSpdDioOuUxXcC";
-	while (ALL_FRMAT_CHARS[count++])
+	ALL_FRMAT_CHARS = " 1234567890.*#-+ hljzsSpdDioOuUxXcC";
+	while (ALL_FRMAT_CHARS[count])
 	{
 		if (ALL_FRMAT_CHARS[count] == c)
 			return (1);
+		count++;
 	}
 	return (0);
 }
+
+int		checkthrough_for(char *mods, char c)
+{
+	if (!mods)
+		return (0);
+	while (*mods)
+	{
+		if (*mods == c)
+			return (1);
+		mods++;
+	}
+	return (0);
+}
+

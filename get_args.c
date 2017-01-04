@@ -10,11 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int		get_len(char *mods)
 {
-	while (*mods++)
+	if (!mods)
+		return (NONE);
+	while (*mods)
 	{
 		if (*mods == 'h' && *mods + 1 == 'h')
 			return (HH);
@@ -28,6 +30,7 @@ int		get_len(char *mods)
 			return (J);
 		if (*mods == 'z')
 			return (Z);
+		mods++;
 	}
 	return (NONE);
 }

@@ -24,10 +24,11 @@ char	*ft_strdup(char *str)
 	ret = (char*)malloc(sizeof(char) * len + 1);
 	if (!ret)
 		return (NULL);
-	while (*str++)
+	while (*str)
 	{
 		ret[count] = *str;
 		count++;
+		str++;
 	}
 	ret[len] = '\0';
 	return (ret);

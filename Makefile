@@ -2,10 +2,11 @@ NAME = libftprintf
 
 SRCS = ft_printf.c \
 		moveto.c	\
-		parse_format.c \
+		get_formats.c \
 		checkfor.c	\
 		get_args.c \
 		do_precision.c \
+		do_minwidth.c \
 		\
 		specifier_functions/dispatcher.c \
 		specifier_functions/spec_c.c \
@@ -23,7 +24,6 @@ SRCS = ft_printf.c \
 		specifier_functions/spec_up_u.c \
 		specifier_functions/spec_up_x.c \
 		specifier_functions/spec_x.c \
-		specifier_functions/d_args.c \
 		\
 		libft_functions/ft_strsub.c \
 		libft_functions/ft_itoa.c \
@@ -34,14 +34,16 @@ SRCS = ft_printf.c \
 		libft_functions/ft_isdigit.c \
 		libft_functions/ft_lltoa.c \
 		libft_functions/ft_strdup.c \
+		libft_functions/ft_strjoin.c \
 
 
 OBJS = ft_printf.o \
 		moveto.o	\
-		parse_format.o \
+		parse_formats.o \
 		checkfor.o	\
 		get_args.o \
 		do_precision.o \
+		do_minwidth.o \
 		\
 		dispatcher.o \
 		spec_c.o \
@@ -59,7 +61,6 @@ OBJS = ft_printf.o \
 		spec_up_u.o \
 		spec_up_x.o \
 		spec_x.o \
-		d_args.c \
 		\
 		ft_strsub.o \
 		ft_itoa.o \
@@ -70,6 +71,7 @@ OBJS = ft_printf.o \
 		ft_isdigit.o \
 		ft_lltoa.o \
 		ft_strdup.o \
+		ft_strjoin.o \
 
 CC = gcc
 

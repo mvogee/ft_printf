@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-tatic void		add_chars(char *retstr, long long int n, int len)
+static void		add_chars(char *retstr, long long int n, int len)
 {
 	unsigned long long int n2;
 

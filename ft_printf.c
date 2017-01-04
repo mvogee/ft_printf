@@ -14,6 +14,15 @@
 #include <stdio.h>
 // tested ft_printf, read_format, 
 
+int		printf_free(char *output)
+{
+	int	len;
+
+	len = ft_strlen(output);
+	write(1, output, len);
+	free(output);
+	return(len);
+}
 
 int		parse_format(char *format, va_list arglist)
 {
@@ -26,7 +35,7 @@ int		parse_format(char *format, va_list arglist)
 	specpos = find_specifier_pos(format);
 	if (specpos == -1)
 		return (0);
-	mods = (specpos == 0 ? NULL : ft_strsub(format, 0, specpos - 1));
+	mods = (specpos == 0 ? NULL : ft_strsub(format, 0, specpos));
 	specifier_funciton = dispatcher(format, specpos);
 	ret = specifier_funciton(mods, arglist);
 	if (mods)
@@ -41,7 +50,7 @@ int		read_format(char *format, va_list arglist)
 
 	count = 0;
 	totallen = 0;
-	while (format[count++])
+	while (format[count])
 	{
 		if (format[count] == '%')
 		{
@@ -52,8 +61,9 @@ int		read_format(char *format, va_list arglist)
 			totallen += parse_format(format, arglist);
 			format = moveto_specifier(format);
 		}
+		count++;
 	}
-	totallen += (count > 0 ? count - 1 : count);
+	totallen += count; // (count > 0 ? count - 1: count);
 	format = print_moveto(format, count);
 	(void)arglist;
 	return (totallen);
@@ -75,7 +85,9 @@ int		ft_printf(char *format, ...)
 int main(void)
 {
 	int k;
-	k  = ft_printf("i can % ddo stuff\n");
+	k  = ft_printf("i can do %-10d %d %.*d stuff\n", -1, -2, 5, 1);
+	printf("%d\n", k);
+	k  = printf("i can do %.10d %d %.*d stuff\n", -1, -2, 5, 1);
 	printf("%d\n", k);
 	return (0);
 }

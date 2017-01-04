@@ -26,6 +26,8 @@ typedef enum	e_len
 //ft_printf.c
 int		ft_printf(char *format, ...);
 int		read_format(char *format, va_list arglist);
+int		parse_format(char *format, va_list arglist);
+int		printf_free(char *output);
 
 //moveto.c
 int		find_specifier_pos(char *format);
@@ -37,11 +39,11 @@ int		checkfor_specifier(char	c);
 int		checkfor_flags(char c);
 int		checkfor_modifiers(char c);
 int		checkfor_all(char c);
+int		checkthrough_for(char *mods, char c);
 
 //get_formats.c
 int		get_precision(char *mods, va_list arglist);
 int		get_minwidth(char *mods, va_list arglist);
-char	get_pad(char *mods);
 int		get_justify(char *mods);
 int		get_sign(char *mods);
 
@@ -53,6 +55,8 @@ char	*hh_spec(va_list arglist);
 
 //do_precision
 char	*do_precision(char	*output, int precision);
+//do_minwidth
+char	*do_minwidth(char *original, int minwidth, char *mods, char spec);
 
 //libft_functions
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
@@ -64,6 +68,7 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 char	*ft_lltoa(long long int n);
 char	*ft_strdup(char *str);
+char	*ft_strjoin(char *s1, char *s2);
 
 //dispatcher
 int 	get_dispatch(char speci);

@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
+//precision is actually performed before justifications
 
 static  char	*pad_copy(char* original, int sign, int pad, int totallen)
 {
@@ -61,7 +63,9 @@ char			*do_precision(char	*output, int precision)
 		retoutp = pad_copy(output, minussign, len, precision);
 
 	}
-	else
+	if (minussign)
+		output--;
+	if (len >= precision)
 		retoutp = ft_strdup(output);
 	free(output);
 	return (retoutp);
