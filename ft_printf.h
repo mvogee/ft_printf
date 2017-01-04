@@ -45,7 +45,7 @@ int		checkthrough_for(char *mods, char c);
 int		get_precision(char *mods, va_list arglist);
 int		get_minwidth(char *mods, va_list arglist);
 int		get_justify(char *mods);
-int		get_sign(char *mods);
+//int		get_sign(char *mods);
 
 //get args
 int		get_len(char *mods);
@@ -57,6 +57,10 @@ char	*hh_spec(va_list arglist);
 char	*do_precision(char	*output, int precision);
 //do_minwidth
 char	*do_minwidth(char *original, int minwidth, char *mods, char spec);
+//do_signs.c
+char	*do_sign(char *original, char *mods);
+char	*hexoct_sign(char spec, char *original);
+char	get_sign(char *original, char *mods);
 
 //libft_functions
 char	*ft_strsub(char const *s, unsigned int start, size_t len);

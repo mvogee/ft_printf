@@ -1,22 +1,18 @@
 
-#include "printf.h"
+#include "ft_printf.h"
 
-char	get_sign(char *original, char *mods, char spec)
+char	get_sign(char *original, char *mods)
 {
-	if (spec == 'd' || spec == 'D' || spec == 'i')
-	{
-		if (original[0] == '-')
-			return ('-');
-		else
-		{
-			if (checkthrough_for(mods, '+'))
-				return ('+');
-			else if (checkthrough_for(mods, ' '))
-				return (' ');
-		}
-	}
+	if (original[0] == '-')
+		return ('-');
 	else
-		return (NULL);
+	{
+		if (checkthrough_for(mods, '+'))
+			return ('+');
+		else if (checkthrough_for(mods, ' '))
+			return (' ');
+	}
+	return ('\0');
 }
 
 char	*hexoct_sign(char spec, char *original)
@@ -34,15 +30,20 @@ char	*hexoct_sign(char spec, char *original)
 	return (ret);
 }
 
-char	*do_sign(char *original, int minwidth, char *mods, char spec)
+char	*do_sign(char *original, char *mods)
 {
 	char	sign;
 	char	*ret;
+	char	*s;
 
-	sing = get_sign(original, mods, spec);
-	if (sign && sing != '-')
-		ret = ft_strjoin(sign, original);
+	sign = get_sign(original, mods);
+	if (sign != '-')
+		s = (sign == '+' ? "+" : " ");
+	else
+		s = "-";
+	if (sign && sign != '-')
+		ret = ft_strjoin(s, original);
 	else
 		ret = ft_strdup(original);
-	return (ft_strjoin(original, sing));
+	return (ret);
 }

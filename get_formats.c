@@ -91,32 +91,33 @@ char	get_pad(char *mods)
 
 int		get_justify(char *mods)
 {
-	while (*mods++)
+	while (*mods)
 	{
 		if (*mods == '-')
 			return (1);
+		mods++;
 	}
 	return (0);
 }
 
-int		get_sign(char *mods)
-{
-	int		b;
-	int		b2;
+// int		get_sign(char *mods)
+// {
+// 	int		b;
+// 	int		b2;
 
-	b = 0;
-	b2 = 0;
-	while (*mods++ && !b)
-	{
-		if (*mods == '+')
-			b = 1;
-		if (*mods == ' ')
-			b2 = 2;
-	}
-	if (b)
-		return (b);
-	if (b2)
-		return (b2);
-	else
-		return (0);
-}
+// 	b = 0;
+// 	b2 = 0;
+// 	while (*mods++ && !b)
+// 	{
+// 		if (*mods == '+')
+// 			b = 1;
+// 		if (*mods == ' ')
+// 			b2 = 2;
+// 	}
+// 	if (b)
+// 		return (b);
+// 	if (b2)
+// 		return (b2);
+// 	else
+// 		return (0);
+// }

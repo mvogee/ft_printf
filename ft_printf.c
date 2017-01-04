@@ -61,11 +61,11 @@ int		read_format(char *format, va_list arglist)
 			totallen += parse_format(format, arglist);
 			format = moveto_specifier(format);
 		}
-		count++;
+		if (*format)
+			count++;
 	}
 	totallen += count; // (count > 0 ? count - 1: count);
 	format = print_moveto(format, count);
-	(void)arglist;
 	return (totallen);
 }
 
@@ -78,6 +78,7 @@ int		ft_printf(char *format, ...)
 	len = 0;
 	if (format)
 		len = read_format(format, arglist);
+	va_end(arglist);
 	return (len);
 }
 
@@ -85,9 +86,9 @@ int		ft_printf(char *format, ...)
 int main(void)
 {
 	int k;
-	k  = ft_printf("i can do %-10d %d %.*d stuff\n", -1, -2, 5, 1);
+	k  = ft_printf("%- 5d", 1);
 	printf("%d\n", k);
-	k  = printf("i can do %.10d %d %.*d stuff\n", -1, -2, 5, 1);
+	k  = printf("%- 5d", 1);
 	printf("%d\n", k);
 	return (0);
 }

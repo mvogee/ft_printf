@@ -66,16 +66,17 @@ static char	*do_justify_pad(char *original, int minwidth)
 // different possible signs are (space) + -
 // only need to worry about the + and (space) signs a - sign will aleady be on
 // the string when it is passed to the function
-static char	*do_pad(char *original, int minwidht, char *mods, char spec)
+static char	*do_pad(char *original, int minwidth, char *mods, char spec)
 {
 	char	*output;
 	char	pad;
 
 	pad = get_pad(mods);
-	output = (char*)malloc(sizeof(char) * minwdith + 1);
+	output = (char*)malloc(sizeof(char) * minwidth + 1);
 	if (!output)
 		return (NULL);
-
+	(void)original;
+	(void)spec;
 
 	return (output);
 }
@@ -91,16 +92,16 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 	if ((spec == 'x' || spec == 'X' || spec == 'o' || spec == 'O') && checkthrough_for(mods, '#'))
 		tmp = hexoct_sign(spec, original);
 	else if (spec == 'd' || spec == 'D' || spec == 'i' || spec == 'u' || spec == 'U')
-		tmp = do_sign(original, mods, spec);
+		tmp = do_sign(original, mods);
 	else
 		tmp = ft_strdup(original);
 	len = ft_strlen(tmp);
-	if (len < minwdith)
+	if (len < minwidth)
 	{
 		if (checkthrough_for(mods, '-'))
 			output = do_justify_pad(tmp, minwidth); //working here
 		else
-			output = do_pad(tmp, mods, minwdith, spec); //make me
+			output = do_pad(tmp, minwidth ,mods, spec); //make me
 	}
 	else
 		output = ft_strdup(tmp);

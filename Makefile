@@ -7,6 +7,7 @@ SRCS = ft_printf.c \
 		get_args.c \
 		do_precision.c \
 		do_minwidth.c \
+		do_signs.c \
 		\
 		specifier_functions/dispatcher.c \
 		specifier_functions/spec_c.c \
@@ -44,6 +45,7 @@ OBJS = ft_printf.o \
 		get_args.o \
 		do_precision.o \
 		do_minwidth.o \
+		do_signs.o \
 		\
 		dispatcher.o \
 		spec_c.o \
