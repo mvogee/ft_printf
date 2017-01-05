@@ -94,17 +94,6 @@ static char	*pad_zero(char *original, int minwidth, char spec)
 	}
 	len = minwidth - ft_strlen(original);
 	output = finish_pad(original, output, '0', minwidth);
-	// while (count < minwidth && *original)
-	// {
-	// 	if (count < len)
-	// 		output[count] = '0';
-	// 	else
-	// 	{
-	// 		output[count] = *original;
-	// 		original++;
-	// 	}
-	// 	count++;
-	// }
 	return (output);
 }
 
@@ -130,17 +119,6 @@ static char	*do_pad(char *original, int minwidth, char *mods, char spec)
 		return (NULL);
 	output[minwidth] = '\0';
 	output = finish_pad(original, output, pad, minwidth);
-	// while (count < minwidth && *original)
-	// {
-	// 	if (count < len)
-	// 		output[count] = pad;
-	// 	else
-	// 	{
-	// 		output[count] = *original;
-	// 		original++;
-	// 	}
-	// 	count++;
-	// }
 	return (output);
 }
 // the # modifier is done after precision but before the min width
@@ -151,7 +129,7 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 	int		len;
 	char	*output;
 	char	*tmp;
-// the whole signing part could be moved to a sepperate function if space is needed
+
 	if ((spec == 'x' || spec == 'X' || spec == 'o' || spec == 'O') && checkthrough_for(mods, '#'))
 		tmp = hexoct_sign(spec, original);
 	else if (spec == 'd' || spec == 'D' || spec == 'i' || spec == 'u' || spec == 'U')
@@ -174,3 +152,16 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 	free(original);
 	return (output);
 }
+
+//replace finish_pad with this if proplems arise around finish_pad
+	// while (count < minwidth && *original)
+	// {
+	// 	if (count < len)
+	// 		output[count] = pad;
+	// 	else
+	// 	{
+	// 		output[count] = *original;
+	// 		original++;
+	// 	}
+	// 	count++;
+	// }
