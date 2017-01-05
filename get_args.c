@@ -18,11 +18,11 @@ int		get_len(char *mods)
 		return (NONE);
 	while (*mods)
 	{
-		if (*mods == 'h' && *mods + 1 == 'h')
+		if (*mods == 'h' && mods[1] == 'h')
 			return (HH);
 		if (*mods == 'h')
 			return (H);
-		if (*mods == 'l' && *mods + 1 == 'l')
+		if (*mods == 'l' && mods[1] == 'l')
 			return (LL);
 		if (*mods == 'l')
 			return (L);
@@ -55,7 +55,7 @@ int		make_ascii(int i)
 	int		ret;
 
 	ret = i;
-	while (ret < 0 || ret > 127)
+	while (ret < -128 || ret > 127)
 	{
 		if (ret < 0)
 			ret = 127 + (ret + 129);

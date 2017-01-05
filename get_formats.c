@@ -22,11 +22,11 @@ int		get_precision(char *mods, va_list arglist)
 	count = 0;
 	precis = NULL;
 	if (!mods)
-		return (0);
+		return (-1);
 	while (*mods != '.' && *mods)
 		mods++;
 	if (!*mods)
-		precision = 0;
+		return (-1);
 	mods++;
 	if (*mods == '*')
 		precision = va_arg(arglist, int);

@@ -29,7 +29,7 @@ static char	*finish_pad(char *original, char *output, char pad, int minwidth)
 	else
 		count = 0;
 	len = minwidth - ft_strlen(original);
-	while (count < minwidth && *original)
+	while (count < minwidth)
 	{
 		if (count < len)
 			output[count] = pad;
@@ -142,7 +142,7 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 		if (checkthrough_for(mods, '-'))
 			output = do_justify_pad(tmp, minwidth); //minmal testing done :working
 		else
-			output = do_pad(tmp, minwidth ,mods, spec); //make me
+			output = do_pad(tmp, minwidth ,mods, spec); //tested working
 	}
 	else
 		output = ft_strdup(tmp);

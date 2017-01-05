@@ -16,7 +16,7 @@
 // -32769 short = max short wrap
 // -9223372036854775808 max long long no wrap 9223372036854775807
 // get minwidth is working
-static char	*get_output(char *mods, va_list arglist)
+static char	*get_output(char *mods, va_list arglist, int precision)
 {
 	int		len;
 	char	*ret;
@@ -36,6 +36,8 @@ static char	*get_output(char *mods, va_list arglist)
 		ret = h_spec(arglist);
 	else
 		ret = ft_itoa(va_arg(arglist, int));
+	if (ret[0] == '0' && ret[1] == '\0' && precision == 0) // dealing with weird case
+		ret[0] = 0;
 	return (ret);
 }
 
@@ -49,14 +51,14 @@ int			spec_d(char *mods, va_list arglist)
 
 	minwidth = get_minwidth(mods, arglist);
 	precision = get_precision(mods, arglist);
-	output = get_output(mods, arglist);
+	output = get_output(mods, arglist, precision);
 	if (!output)
 		return (0);
 //	if (checkthrough_for(mods, '-') == 0)
 	output = do_precision(output, precision);
 	if (!output)
 		return (0);
-	output = do_minwidth(output, minwidth, mods, 'd'); // working on this
+	output = do_minwidth(output, minwidth, mods, 'd');
 	if (!output)
 		return (0);
 	retlen = printf_free(output);
