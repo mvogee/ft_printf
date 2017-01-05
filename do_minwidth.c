@@ -11,29 +11,36 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+#include <stdio.h>
 // minwidth includes the space modifier.
 // minwidth includes the sign modifier.
 // minwidth needs to deal with justification
 
-static char	get_pad(char *mods)
+static char	*finish_pad(char *original, char *output, char pad, int minwidth)
 {
-	char	pad;
+	int		len;
+	int		count;
 
-	pad = ' ';
-	while (*mods++)
+	if ((output[0] == '-' || output[0] == '+' || output[0] == ' ' ||
+		output[0] == '0') && output[1] != 'x' && output[1] != 'X')
+		count = 1;
+	else if (output[0] == '0' && (output[1] == 'x' || output[1] == 'X'))
+		count = 2;
+	else
+		count = 0;
+	len = minwidth - ft_strlen(original);
+	while (count < minwidth && *original)
 	{
-		if (*mods == '-')
+		if (count < len)
+			output[count] = pad;
+		else
 		{
-			pad = ' ';
-			break ;
+			output[count] = *original;
+			original++;
 		}
-		if (*mods == '0')
-			pad = '0';
+		count++;
 	}
-	if (checkthrough_for(mods, '.'))
-		pad = ' ';
-	return (pad);
+	return (output);
 }
 
 // with right justify we know we dont have to deal with the 0 pad mod
@@ -62,22 +69,78 @@ static char	*do_justify_pad(char *original, int minwidth)
 	return (output);
 }
 
+static char	*pad_zero(char *original, int minwidth, char spec)
+{
+	char	*output;
+	int		count;
+	int		len;
+
+	count = 0;
+	if (!(output = (char*)malloc(sizeof(char) * minwidth + 1)))
+		return (NULL);
+	output[minwidth] = '\0';
+	if (spec == 'x' || spec == 'X')
+	{
+		output[0] = original[0];
+		output[1] = original[1];
+		count += 2;
+		original += 2;
+	}
+	else
+	{
+		output[count] = original[0];
+		original++;
+		count++;
+	}
+	len = minwidth - ft_strlen(original);
+	output = finish_pad(original, output, '0', minwidth);
+	// while (count < minwidth && *original)
+	// {
+	// 	if (count < len)
+	// 		output[count] = '0';
+	// 	else
+	// 	{
+	// 		output[count] = *original;
+	// 		original++;
+	// 	}
+	// 	count++;
+	// }
+	return (output);
+}
+
 // here we know we dont have right justify we just need to deal with the sign
 // different possible signs are (space) + -
 // only need to worry about the + and (space) signs a - sign will aleady be on
+// if we are padding with 0s we need to move any sign to the beggining
 // the string when it is passed to the function
 static char	*do_pad(char *original, int minwidth, char *mods, char spec)
 {
 	char	*output;
 	char	pad;
+	int		count;
+	int		len;
 
 	pad = get_pad(mods);
-	output = (char*)malloc(sizeof(char) * minwidth + 1);
-	if (!output)
+	count = 0;
+	len = minwidth - ft_strlen(original);
+	if (pad == '0' && (original[0] == '-' || original[0] == '+' ||
+		original[0] == ' ' || checkthrough_for(mods, '#')))
+		return (pad_zero(original, minwidth, spec));
+	if (!(output = (char*)malloc(sizeof(char) * minwidth + 1)))
 		return (NULL);
-	(void)original;
-	(void)spec;
-
+	output[minwidth] = '\0';
+	output = finish_pad(original, output, pad, minwidth);
+	// while (count < minwidth && *original)
+	// {
+	// 	if (count < len)
+	// 		output[count] = pad;
+	// 	else
+	// 	{
+	// 		output[count] = *original;
+	// 		original++;
+	// 	}
+	// 	count++;
+	// }
 	return (output);
 }
 // the # modifier is done after precision but before the min width
@@ -99,7 +162,7 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 	if (len < minwidth)
 	{
 		if (checkthrough_for(mods, '-'))
-			output = do_justify_pad(tmp, minwidth); //working here
+			output = do_justify_pad(tmp, minwidth); //minmal testing done :working
 		else
 			output = do_pad(tmp, minwidth ,mods, spec); //make me
 	}

@@ -45,6 +45,7 @@ int		checkthrough_for(char *mods, char c);
 int		get_precision(char *mods, va_list arglist);
 int		get_minwidth(char *mods, va_list arglist);
 int		get_justify(char *mods);
+char	get_pad(char *mods);
 //int		get_sign(char *mods);
 
 //get args

@@ -52,8 +52,8 @@ int			spec_d(char *mods, va_list arglist)
 	output = get_output(mods, arglist);
 	if (!output)
 		return (0);
-	if (checkthrough_for(mods, '-') == 0)
-		output = do_precision(output, precision);
+//	if (checkthrough_for(mods, '-') == 0)
+	output = do_precision(output, precision);
 	if (!output)
 		return (0);
 	output = do_minwidth(output, minwidth, mods, 'd'); // working on this

@@ -50,10 +50,10 @@ int		get_minwidth(char *mods, va_list arglist)
 	char	*minw;
 
 	count= 0;
-	minw = NULL;
 	if (!mods)
 		return (0);
-	while (ft_isdigit(*mods) != 1 && *mods != '.' && *mods != '*' && *mods)
+	while ((ft_isdigit(*mods) != 1 && *mods != '.' && *mods != '*' && *mods) ||
+		*mods == '0')
 		mods++;
 	if (!*mods || *mods == '.')
 		minwidth = 0;
@@ -72,19 +72,6 @@ int		get_minwidth(char *mods, va_list arglist)
 	return (minwidth);
 }
 
-char	get_pad(char *mods)
-{
-	char	pad;
-
-	while (ft_isdigit(*mods) != 1)
-		mods++;
-	if (*mods == '0')
-		pad = '0';
-	else
-		pad = ' ';
-	return (pad);
-}
-
 /*
 ** WHERE 1 MEANS LEFT JUSTIFY AND 0 MEANS RIGHT JUSTIFY
 */
@@ -98,6 +85,27 @@ int		get_justify(char *mods)
 		mods++;
 	}
 	return (0);
+}
+
+char	get_pad(char *mods)
+{
+	char	pad;
+
+	pad = ' ';
+	if (checkthrough_for(mods, '.'))
+		return (pad);
+	while (*mods)
+	{
+		if (*mods == '-')
+		{
+			pad = ' ';
+			break ;
+		}
+		if (*mods == '0')
+			pad = '0';
+		mods++;
+	}
+	return (pad);
 }
 
 // int		get_sign(char *mods)
