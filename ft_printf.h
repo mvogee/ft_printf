@@ -46,7 +46,7 @@ int		get_precision(char *mods, va_list arglist);
 int		get_minwidth(char *mods, va_list arglist);
 int		get_justify(char *mods);
 char	get_pad(char *mods);
-//int		get_sign(char *mods);
+int		get_indexof(char *str, char c);
 
 //get args
 int		get_len(char *mods);
@@ -63,6 +63,10 @@ char	*do_sign(char *original, char *mods);
 char	*hexoct_sign(char spec, char *original);
 char	get_sign(char *original, char *mods);
 
+//ft_uni_to_utf8.c
+char		*ft_uni_utf8_char(wchar_t c);
+char		*ft_uni_utf8_str(wchar_t *str);
+
 //libft_functions
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_itoa(int n);
@@ -75,6 +79,7 @@ char	*ft_lltoa(long long int n);
 char	*ft_strdup(char *str);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_utoa(uintmax_t num);
+char	*ft_itoa_base(uintmax_t n, int b);
 
 //dispatcher
 int 	get_dispatch(char speci);

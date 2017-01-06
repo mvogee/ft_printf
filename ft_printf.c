@@ -82,13 +82,14 @@ int		ft_printf(char *format, ...)
 	return (len);
 }
 
-
+#include <locale.h>
 int main(void)
 {
+	setlocale(LC_ALL, "");
 	int k;
-	k  = ft_printf("%hhu", (unsigned char)-1);
+	k  = ft_printf("%s", "string");
 	printf("\n%d\n", k);
-	k  = printf("%hhu", (unsigned char)-1);
+	k  = printf("%s", "string");
 	printf("\n%d\n", k);
 	return (0);
 }

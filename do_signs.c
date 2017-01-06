@@ -33,9 +33,10 @@ char	*hexoct_sign(char spec, char *original)
 
 	if (spec == 'X')
 		ret = ft_strjoin("0X", original);
-	else if (spec == 'x')
+	else if (spec == 'x' || spec == 'p')
 		ret = ft_strjoin("0x", original);
-	else if (spec == 'o' || spec == 'O')
+	else if ((spec == 'o' || spec == 'O') &&
+		!(original[0] == '0' && original[1] == '\0'))
 		ret = ft_strjoin("0", original);
 	else
 		ret = ft_strdup(original);

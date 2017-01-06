@@ -8,6 +8,7 @@ SRCS = ft_printf.c \
 		do_precision.c \
 		do_minwidth.c \
 		do_signs.c \
+		ft_uni_to_utf8.c \
 		\
 		specifier_functions/dispatcher.c \
 		specifier_functions/spec_c.c \
@@ -37,6 +38,7 @@ SRCS = ft_printf.c \
 		libft_functions/ft_strdup.c \
 		libft_functions/ft_strjoin.c \
 		libft_functions/ft_utoa.c \
+		libft_functions/ft_itoa_base.c \
 
 
 OBJS = ft_printf.o \
@@ -47,6 +49,7 @@ OBJS = ft_printf.o \
 		do_precision.o \
 		do_minwidth.o \
 		do_signs.o \
+		ft_uni_to_utf8.o \
 		\
 		dispatcher.o \
 		spec_c.o \
@@ -76,6 +79,7 @@ OBJS = ft_printf.o \
 		ft_strdup.o \
 		ft_strjoin.o \
 		ft_utoa.o \
+		ft_itoa_base.o \
 
 CC = gcc
 

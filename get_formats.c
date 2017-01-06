@@ -94,38 +94,28 @@ char	get_pad(char *mods)
 	pad = ' ';
 	if (checkthrough_for(mods, '.'))
 		return (pad);
-	while (*mods)
+	while (*mods && (ft_isdigit(*mods) != 1 || *mods == '0'))
 	{
-		if (*mods == '-')
-		{
-			pad = ' ';
-			break ;
-		}
 		if (*mods == '0')
 			pad = '0';
 		mods++;
 	}
+	if (checkthrough_for(mods, '-'))
+		pad = ' ';
 	return (pad);
 }
 
-// int		get_sign(char *mods)
-// {
-// 	int		b;
-// 	int		b2;
+int		get_indexof(char *str, char c)
+{
+	int		index;
 
-// 	b = 0;
-// 	b2 = 0;
-// 	while (*mods++ && !b)
-// 	{
-// 		if (*mods == '+')
-// 			b = 1;
-// 		if (*mods == ' ')
-// 			b2 = 2;
-// 	}
-// 	if (b)
-// 		return (b);
-// 	if (b2)
-// 		return (b2);
-// 	else
-// 		return (0);
-// }
+	index = 0;
+	while (*str)
+	{
+		if (*str == c)
+			return (index);
+		str++;
+		index++;
+	}
+	return (-1);
+}

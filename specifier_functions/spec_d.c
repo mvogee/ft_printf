@@ -12,9 +12,6 @@
 
 #include "../ft_printf.h"
 
-// -32769 short = max short wrap
-// -9223372036854775808 max long long no wrap 9223372036854775807
-// get minwidth is working
 static char	*get_output(char *mods, va_list arglist, int precision)
 {
 	int		len;
@@ -35,7 +32,7 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 		ret = h_spec(arglist);
 	else
 		ret = ft_itoa(va_arg(arglist, int));
-	if (ret[0] == '0' && ret[1] == '\0' && precision == 0) // dealing with weird case
+	if (ret[0] == '0' && ret[1] == '\0' && precision == 0)
 		ret[0] = 0;
 	return (ret);
 }

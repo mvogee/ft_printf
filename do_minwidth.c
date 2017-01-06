@@ -130,7 +130,8 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 	char	*output;
 	char	*tmp;
 
-	if ((spec == 'x' || spec == 'X' || spec == 'o' || spec == 'O') && checkthrough_for(mods, '#'))
+	if (((spec == 'x' || spec == 'X' || spec == 'o' || spec == 'O')
+		&& checkthrough_for(mods, '#')) || spec == 'p')
 		tmp = hexoct_sign(spec, original);
 	else if (spec == 'd' || spec == 'D' || spec == 'i' || spec == 'u' || spec == 'U')
 		tmp = do_sign(original, mods);
@@ -146,8 +147,6 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 	}
 	else
 		output = ft_strdup(tmp);
-	if (!output)
-			return (NULL);
 	free(tmp);
 	free(original);
 	return (output);
