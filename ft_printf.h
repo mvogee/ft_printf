@@ -74,6 +74,7 @@ int		ft_isdigit(int c);
 char	*ft_lltoa(long long int n);
 char	*ft_strdup(char *str);
 char	*ft_strjoin(char *s1, char *s2);
+char	*ft_utoa(uintmax_t num);
 
 //dispatcher
 int 	get_dispatch(char speci);

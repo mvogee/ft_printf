@@ -18,7 +18,7 @@ int		find_specifier_pos(char *format)
 	int pos;
 
 	pos = 0;
-	while (checkfor_specifier(format[pos]) != 1 && format[pos])
+	while (checkfor_specifier(format[pos]) != 1)
 	{
 		if (checkfor_all(format[pos]) == 0 || !format[pos])
 			return (-1);

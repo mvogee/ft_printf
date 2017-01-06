@@ -11,11 +11,54 @@
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
+//-1 = 255 max unsigned char
+//-1 = 65535	max unsigned short
+//-1 = 4294967295 		max unsigned int
+//-1 = 18446744073709551615 max unsigned long & long long
+
+static char	*get_output(char *mods, va_list arglist, int precision) // change this to unsigned ints
+{
+	int		len;
+	char	*ret;
+
+	len = get_len(mods);
+	if (len == L)
+		ret = ft_utoa((unsigned long)va_arg(arglist, unsigned long));
+	else if (len == LL)
+		ret = ft_utoa((unsigned long long)va_arg(arglist, unsigned long long));
+	else if (len == J)
+		ret = ft_utoa((uintmax_t)va_arg(arglist, uintmax_t));
+	else if (len == Z)
+		ret = ft_utoa((unsigned long long)va_arg(arglist, size_t));
+	else if (len == HH)
+		ret = ft_utoa((unsigned char)va_arg(arglist, unsigned long));
+	else if (len == H)
+		ret = ft_utoa((unsigned short)va_arg(arglist, unsigned long));
+	else
+		ret = ft_utoa((unsigned int)va_arg(arglist, unsigned int));
+	if (ret[0] == '0' && ret[1] == '\0' && precision == 0) // dealing with weird case
+		ret[0] = 0;
+	return (ret);
+}
 
 int		spec_u(char *mods, va_list arglist)
 {
-	write(1, "spec_ \n", 7);
-	(void)mods;
-	(void)arglist;
-	return (0);
+	int		precision;
+	int		minwidth;
+	int		retlen;
+	char	*output;
+
+	minwidth = get_minwidth(mods, arglist);
+	precision = get_precision(mods, arglist);
+	output = get_output(mods, arglist, precision);
+	if (!output)
+		return (0);
+	output = do_precision(output, precision);
+	if (!output)
+		return (0);
+	output = do_minwidth(output, minwidth, mods, 'u');
+	if (!output)
+		return (0);
+	retlen = printf_free(output);
+	return (retlen);
 }

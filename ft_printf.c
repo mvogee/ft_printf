@@ -86,9 +86,9 @@ int		ft_printf(char *format, ...)
 int main(void)
 {
 	int k;
-	k  = ft_printf("@moulitest: %5.d %5.0d", 0, 0);
+	k  = ft_printf("%hhu", (unsigned char)-1);
 	printf("\n%d\n", k);
-	k  = printf("@moulitest: %5.d %5.0d", 0, 0);
+	k  = printf("%hhu", (unsigned char)-1);
 	printf("\n%d\n", k);
 	return (0);
 }

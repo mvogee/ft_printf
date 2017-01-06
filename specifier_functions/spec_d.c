@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-#include <stdio.h>
 
 // -32769 short = max short wrap
 // -9223372036854775808 max long long no wrap 9223372036854775807
@@ -41,7 +40,6 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 	return (ret);
 }
 
-// all signing will be done in do_minwidth
 int			spec_d(char *mods, va_list arglist)
 {
 	int		precision;
@@ -54,7 +52,6 @@ int			spec_d(char *mods, va_list arglist)
 	output = get_output(mods, arglist, precision);
 	if (!output)
 		return (0);
-//	if (checkthrough_for(mods, '-') == 0)
 	output = do_precision(output, precision);
 	if (!output)
 		return (0);

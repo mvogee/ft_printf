@@ -36,6 +36,7 @@ SRCS = ft_printf.c \
 		libft_functions/ft_lltoa.c \
 		libft_functions/ft_strdup.c \
 		libft_functions/ft_strjoin.c \
+		libft_functions/ft_utoa.c \
 
 
 OBJS = ft_printf.o \
@@ -74,6 +75,7 @@ OBJS = ft_printf.o \
 		ft_lltoa.o \
 		ft_strdup.o \
 		ft_strjoin.o \
+		ft_utoa.o \
 
 CC = gcc
 
