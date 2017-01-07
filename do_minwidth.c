@@ -11,10 +11,13 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-// minwidth includes the space modifier.
-// minwidth includes the sign modifier.
-// minwidth needs to deal with justification
+
+/*
+** finish_pad
+** the first if conditions are taking into account signs that have been placed
+** add the padding to the original string
+** returns the modified string with pre padding done
+*/
 
 static char	*finish_pad(char *original, char *output, char pad, int minwidth)
 {
@@ -43,8 +46,12 @@ static char	*finish_pad(char *original, char *output, char pad, int minwidth)
 	return (output);
 }
 
-// with right justify we know we dont have to deal with the 0 pad mod
-// we still have to deal with the ' ' mod. it still goes in front of the precicion
+/*
+** do_justify_pad
+** add the padding char to the original string
+** returns the padded string
+*/
+
 static char	*do_justify_pad(char *original, int minwidth)
 {
 	char	*output;
@@ -68,6 +75,12 @@ static char	*do_justify_pad(char *original, int minwidth)
 	}
 	return (output);
 }
+
+/*
+** pad_zero
+** if else conditions deal with keeping the sign in the right place
+** returns the padded original string gotten from finish_pad
+*/
 
 static char	*pad_zero(char *original, int minwidth, char spec)
 {
@@ -97,11 +110,12 @@ static char	*pad_zero(char *original, int minwidth, char spec)
 	return (output);
 }
 
-// here we know we dont have right justify we just need to deal with the sign
-// different possible signs are (space) + -
-// only need to worry about the + and (space) signs a - sign will aleady be on
-// if we are padding with 0s we need to move any sign to the beggining
-// the string when it is passed to the function
+/*
+** do_pad
+** if condition deals with a zero pad that also deals with a sign
+** returns a pre-padded string
+*/
+
 static char	*do_pad(char *original, int minwidth, char *mods, char spec)
 {
 	char	*output;
@@ -121,9 +135,14 @@ static char	*do_pad(char *original, int minwidth, char *mods, char spec)
 	output = finish_pad(original, output, pad, minwidth);
 	return (output);
 }
-// the # modifier is done after precision but before the min width
-// the # mod only effects the x and o specifiers
-// we will need to deal with the space mod durring minwidth padding
+
+/*
+** do_minwidth
+** any singing is done right away dealt with in the first if else statement
+** if any minwidth needs to be done it is sent to the correct padding function
+** finished output string is returned
+*/
+
 char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 {
 	int		len;
@@ -133,7 +152,7 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 	if (((spec == 'x' || spec == 'X' || spec == 'o' || spec == 'O')
 		&& checkthrough_for(mods, '#')) || spec == 'p')
 		tmp = hexoct_sign(spec, original);
-	else if (spec == 'd' || spec == 'D' || spec == 'i' || spec == 'u' || spec == 'U')
+	else if (spec == 'd' || spec == 'D' || spec == 'i')
 		tmp = do_sign(original, mods);
 	else
 		tmp = ft_strdup(original);
@@ -141,9 +160,9 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 	if (len < minwidth)
 	{
 		if (checkthrough_for(mods, '-'))
-			output = do_justify_pad(tmp, minwidth); //minmal testing done :working
+			output = do_justify_pad(tmp, minwidth);
 		else
-			output = do_pad(tmp, minwidth ,mods, spec); //tested working
+			output = do_pad(tmp, minwidth, mods, spec);
 	}
 	else
 		output = ft_strdup(tmp);
@@ -151,16 +170,3 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 	free(original);
 	return (output);
 }
-
-//replace finish_pad with this if proplems arise around finish_pad
-	// while (count < minwidth && *original)
-	// {
-	// 	if (count < len)
-	// 		output[count] = pad;
-	// 	else
-	// 	{
-	// 		output[count] = *original;
-	// 		original++;
-	// 	}
-	// 	count++;
-	// }

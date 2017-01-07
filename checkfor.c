@@ -11,19 +11,19 @@
 /* ************************************************************************** */
 
 /*
-** ALL FUNCTIONS RETURN 0 FOR ERROR 1 FOR SUCCESS 
+** ALL FUNCTIONS RETURN 0 FOR ERROR 1 FOR SUCCESS
 */
 
-int		checkfor_specifier(char	c)
+int		checkfor_specifier(char c)
 {
-	const char *SPECIFIERS;
-	int count;
+	const char	*specifiers;
+	int			count;
 
-	count= 0;
-	SPECIFIERS  = "sSpdDioOuUxXcC%";
-	while (SPECIFIERS[count])
+	count = 0;
+	specifiers = "sSpdDioOuUxXcC%";
+	while (specifiers[count])
 	{
-		if (SPECIFIERS[count] == c)
+		if (specifiers[count] == c)
 			return (1);
 		count++;
 	}
@@ -32,14 +32,14 @@ int		checkfor_specifier(char	c)
 
 int		checkfor_flags(char c)
 {
-	const char *FLAGS;
-	int count;
+	const char	*flags;
+	int			count;
 
 	count = 0;
-	FLAGS  =  "hljz";
-	while (FLAGS[count])
+	flags = "hljz";
+	while (flags[count])
 	{
-		if (FLAGS[count] == c)
+		if (flags[count] == c)
 			return (1);
 		count++;
 	}
@@ -48,14 +48,14 @@ int		checkfor_flags(char c)
 
 int		checkfor_modifiers(char c)
 {
-	const char *MODIFIERS;
-	int count;
+	const char	*modifiers;
+	int			count;
 
 	count = 0;
-	MODIFIERS = ".*#0-+ ";
-	while (MODIFIERS[count])
+	modifiers = ".*#0-+ ";
+	while (modifiers[count])
 	{
-		if (MODIFIERS[count] == c)
+		if (modifiers[count] == c)
 			return (1);
 		count++;
 	}
@@ -64,14 +64,14 @@ int		checkfor_modifiers(char c)
 
 int		checkfor_all(char c)
 {
-	const char *ALL_FRMAT_CHARS;
-	int count;
+	const char	*all_frmat_chars;
+	int			count;
 
 	count = 0;
-	ALL_FRMAT_CHARS = " 1234567890.*#-+ hljzsSpdDioOuUxXcC";
-	while (ALL_FRMAT_CHARS[count])
+	all_frmat_chars = " 1234567890.*#-+ hljzsSpdDioOuUxXcC";
+	while (all_frmat_chars[count])
 	{
-		if (ALL_FRMAT_CHARS[count] == c)
+		if (all_frmat_chars[count] == c)
 			return (1);
 		count++;
 	}
@@ -90,4 +90,3 @@ int		checkthrough_for(char *mods, char c)
 	}
 	return (0);
 }
-

@@ -24,7 +24,7 @@ int get_dispatch(char speci)
 	return (id);
 }
 
-int (*dispatcher(char *format, int specpos))(char *, va_list)
+int (*g_dispatcher(char *format, int specpos))(char *, va_list)
 {
 	int				type;
 	t_dispatch_ptr	dispatch_array[15];

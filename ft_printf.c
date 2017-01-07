@@ -11,8 +11,12 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-// tested ft_printf, read_format, 
+
+/*
+** print_free
+** prints a given allocated string then frees the string
+** returns the length of the string printed
+*/
 
 int		printf_free(char *output)
 {
@@ -24,6 +28,13 @@ int		printf_free(char *output)
 	return (len);
 }
 
+/*
+** parse_format
+** extracts the mods from the format string
+** sends the mods to the correct function to deal with the format type
+** returns a length gotten from the specifier function
+*/
+
 int		parse_format(char *format, va_list arglist)
 {
 	int		ret;
@@ -33,7 +44,7 @@ int		parse_format(char *format, va_list arglist)
 
 	ret = 0;
 	specpos = find_specifier_pos(format);
-	if ((specpos <= -1 || !checkfor_all(format[specpos]))) // dealing with 010Z cases
+	if ((specpos <= -1 || !checkfor_all(format[specpos])))
 	{
 		specpos *= (specpos < 0 ? -1 : 1);
 		if ((checkfor_all(format[specpos]) == 0 && format[specpos] != '\0'))
@@ -46,12 +57,20 @@ int		parse_format(char *format, va_list arglist)
 	if (!format[specpos])
 		return (0);
 	mods = (specpos == 0 ? NULL : ft_strsub(format, 0, specpos));
-	specifier_funciton = dispatcher(format, specpos);
+	specifier_funciton = g_dispatcher(format, specpos);
 	ret += specifier_funciton(mods, arglist);
 	if (mods)
 		free(mods);
 	return (ret);
 }
+
+/*
+** read_format
+** counts and prints up till the first %
+** sends format starting at the % to parse_format
+** moves format pointer to the end of the format specifer
+** returns the total number of characters written
+*/
 
 int		read_format(char *format, va_list arglist)
 {
@@ -81,12 +100,13 @@ int		read_format(char *format, va_list arglist)
 
 /*
 ** chec_char_nulls
-** this function is to catch for return length being wrong when a null
-** character is given as an argument
+** catches for return length being wrong when a null character is
+** given as an argument
 ** simply goes through all the args checking to see if they are a null char
+** returns number of null characters given as arguments
 */
 
-int				check_char_nulls(char *format, va_list arglist)
+int		check_char_nulls(char *format, va_list arglist)
 {
 	int			ret;
 	char		c;
@@ -111,6 +131,13 @@ int				check_char_nulls(char *format, va_list arglist)
 	return (ret);
 }
 
+/*
+** ft_printf
+** main kickoff function
+** initializes variadic variables and starts the function
+** returns number of characters written
+*/
+
 int		ft_printf(char *format, ...)
 {
 	va_list		arglist;
@@ -128,17 +155,4 @@ int		ft_printf(char *format, ...)
 	va_end(arglist);
 	va_end(copy);
 	return (len);
-}
-
-#include <locale.h>
-#include <string.h>
-int main(void)
-{
-	setlocale(LC_ALL, "");
-	int k;
-	k = ft_printf("%V%%%");
-	printf("\n%d\n", k);
-	k =	printf("@moulitest: %#.x %0#.0x", 1, 0);
-	printf("\n%d\n", k);
-	return (0);
 }
