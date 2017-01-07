@@ -14,8 +14,22 @@
 
 int		spec_pc(char *mods, va_list arglist)
 {
-	write(1, "spec_ \n", 7);
-	(void)mods;
-	(void)arglist;
-	return (0);
+	int		precision;
+	int		minwidth;
+	int		retlen;
+	char	*output;
+
+	minwidth = get_minwidth(mods, arglist);
+	precision = get_precision(mods, arglist);
+	precision = 0;
+	if (checkthrough_for(mods, '.'))
+		mods[get_indexof(mods, '.')] = '_';
+	output = ft_strdup("%");
+	if (!output)
+		return (0);
+	output = do_minwidth(output, minwidth, mods, '%');
+	if (!output)
+		return (0);
+	retlen = printf_free(output);
+	return (retlen);
 }

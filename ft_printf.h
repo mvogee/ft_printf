@@ -99,5 +99,6 @@ int		spec_up_s(char *mods, va_list arglist);
 int		spec_up_u(char *mods, va_list arglist);
 int		spec_up_x(char *mods, va_list arglist);
 int		spec_x(char *mods, va_list arglist);
+int		spec_invalid(char *mods, int minwidth, char output);
 
 #endif

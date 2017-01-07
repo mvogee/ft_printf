@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int		find_specifier_pos(char *format)
 {
@@ -21,7 +20,9 @@ int		find_specifier_pos(char *format)
 	while (checkfor_specifier(format[pos]) != 1)
 	{
 		if (checkfor_all(format[pos]) == 0 || !format[pos])
-			return (-1);
+		{
+			return(pos * -1);
+		}
 		pos++;
 	}
 	return (pos);
@@ -31,7 +32,9 @@ char	*moveto_specifier(char *format)
 {
 	while (checkfor_specifier(*format) != 1 && *format)
 	{
-		if (checkfor_all(*format) == 0)
+		if (checkfor_all(*format) == 0 && *format)
+			return (format + 1);
+		else if (checkfor_all(*format) == 0)
 			return (format);
 		format++;
 	}

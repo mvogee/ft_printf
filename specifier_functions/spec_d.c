@@ -32,6 +32,8 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 		ret = h_spec(arglist);
 	else
 		ret = ft_itoa(va_arg(arglist, int));
+	if (!ret)
+		return (NULL);
 	if (ret[0] == '0' && ret[1] == '\0' && precision == 0)
 		ret[0] = 0;
 	return (ret);

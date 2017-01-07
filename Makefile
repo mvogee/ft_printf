@@ -26,6 +26,7 @@ SRCS = ft_printf.c \
 		specifier_functions/spec_up_u.c \
 		specifier_functions/spec_up_x.c \
 		specifier_functions/spec_x.c \
+		specifier_functions/spec_invalid.c \
 		\
 		libft_functions/ft_strsub.c \
 		libft_functions/ft_itoa.c \
@@ -67,6 +68,7 @@ OBJS = ft_printf.o \
 		spec_up_u.o \
 		spec_up_x.o \
 		spec_x.o \
+		spec_invalid.o \
 		\
 		ft_strsub.o \
 		ft_itoa.o \

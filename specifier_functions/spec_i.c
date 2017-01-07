@@ -35,7 +35,9 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 		ret = h_spec(arglist);
 	else
 		ret = ft_itoa(va_arg(arglist, int));
-	if (ret[0] == '0' && ret[1] == '\0' && precision == 0) // dealing with weird case
+	if (!ret)
+		return (NULL);
+	if (ret[0] == '0' && ret[1] == '\0' && precision == 0)
 		ret[0] = 0;
 	return (ret);
 }
@@ -52,7 +54,6 @@ int			spec_i(char *mods, va_list arglist)
 	output = get_output(mods, arglist, precision);
 	if (!output)
 		return (0);
-//	if (checkthrough_for(mods, '-') == 0)
 	output = do_precision(output, precision);
 	if (!output)
 		return (0);

@@ -32,6 +32,8 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 		ret = ft_itoa_base((unsigned short)va_arg(arglist, unsigned long), 8);
 	else
 		ret = ft_itoa_base((unsigned int)va_arg(arglist, unsigned int), 8);
+	if (!ret)
+		return (NULL);
 	if (ret[0] == '0' && ret[1] == '\0' && precision == 0) // dealing with weird case
 		ret[0] = 0;
 	return (ret);

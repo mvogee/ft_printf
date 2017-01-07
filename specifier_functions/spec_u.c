@@ -11,12 +11,8 @@
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-//-1 = 255 max unsigned char
-//-1 = 65535	max unsigned short
-//-1 = 4294967295 		max unsigned int
-//-1 = 18446744073709551615 max unsigned long & long long
 
-static char	*get_output(char *mods, va_list arglist, int precision) // change this to unsigned ints
+static char	*get_output(char *mods, va_list arglist, int precision)
 {
 	int		len;
 	char	*ret;
@@ -36,7 +32,9 @@ static char	*get_output(char *mods, va_list arglist, int precision) // change th
 		ret = ft_utoa((unsigned short)va_arg(arglist, unsigned long));
 	else
 		ret = ft_utoa((unsigned int)va_arg(arglist, unsigned int));
-	if (ret[0] == '0' && ret[1] == '\0' && precision == 0) // dealing with weird case
+	if (!ret)
+		return (NULL);
+	if (ret[0] == '0' && ret[1] == '\0' && precision == 0)
 		ret[0] = 0;
 	return (ret);
 }

@@ -32,6 +32,8 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 		ret = ft_itoa_base((unsigned short)va_arg(arglist, unsigned long), 16);
 	else
 		ret = ft_itoa_base((unsigned int)va_arg(arglist, unsigned int), 16);
+	if (!ret)
+		return (NULL);
 	if (ret[0] == '0' && ret[1] == '\0' && precision == 0)
 		ret[0] = 0;
 	return (ret);
@@ -49,7 +51,7 @@ int		spec_x(char *mods, va_list arglist)
 	output = get_output(mods, arglist, precision);
 	if (!output)
 		return (0);
-	if (output[0] == '0' && output[1] == '\0' && checkthrough_for(mods, '#'))
+	if (output[0] == 0 && output[1] == '\0' && checkthrough_for(mods, '#'))
 		mods[get_indexof(mods, '#')] = '_';
 	output = do_precision(output, precision);
 	if (!output)
