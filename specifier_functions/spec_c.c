@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static char	*get_output(char *mods , va_list arglist)
+static char	*get_output(char *mods, va_list arglist)
 {
 	int		len;
 	char	*ret;
@@ -31,7 +31,7 @@ static char	*get_output(char *mods , va_list arglist)
 	return (ret);
 }
 
-int		spec_c(char *mods, va_list arglist)
+int			spec_c(char *mods, va_list arglist)
 {
 	int		precision;
 	int		minwidth;

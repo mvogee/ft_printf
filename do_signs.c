@@ -10,8 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
+
+/*
+** get_sign
+** gets the sign to be written if any
+** returns the sign character or null character if no sign is to  be written
+*/
 
 char	get_sign(char *original, char *mods)
 {
@@ -26,6 +31,12 @@ char	get_sign(char *original, char *mods)
 	}
 	return ('\0');
 }
+
+/*
+** hexoct_sign
+** given a hex or oct specifier add the correct prefix to the string
+** returns prefixed string
+*/
 
 char	*hexoct_sign(char spec, char *original)
 {
@@ -42,6 +53,12 @@ char	*hexoct_sign(char spec, char *original)
 		ret = ft_strdup(original);
 	return (ret);
 }
+
+/*
+** so_sign
+** finds and adds the correct sign to the string
+** returns signed string or copy of original if no sign is written
+*/
 
 char	*do_sign(char *original, char *mods)
 {

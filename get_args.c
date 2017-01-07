@@ -12,6 +12,12 @@
 
 #include "ft_printf.h"
 
+/*
+** get_len
+** determines if there is a length modifier
+** returns an Enum corresponding to the modifer
+*/
+
 int		get_len(char *mods)
 {
 	if (!mods)
@@ -35,6 +41,12 @@ int		get_len(char *mods)
 	return (NONE);
 }
 
+/*
+** make_short
+** casts an int to a short manually
+** returns short int
+*/
+
 int		make_short(int i)
 {
 	int		ret;
@@ -49,6 +61,12 @@ int		make_short(int i)
 	}
 	return (ret);
 }
+
+/*
+** make_ascii
+** casts an int to ascii manually
+** returns ascii range int
+*/
 
 int		make_ascii(int i)
 {

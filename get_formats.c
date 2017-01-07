@@ -11,8 +11,14 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-// get precision and get minwidth are working
+
+/*
+** get_precision
+** extracts the precision from the mods
+** returns -1 if no precision
+** returns precision
+*/
+
 int		get_precision(char *mods, va_list arglist)
 {
 	int		precision;
@@ -21,11 +27,9 @@ int		get_precision(char *mods, va_list arglist)
 
 	count = 0;
 	precis = NULL;
-	if (!mods)
-		return (-1);
-	while (*mods != '.' && *mods)
+	while (mods && *mods != '.' && *mods)
 		mods++;
-	if (!*mods)
+	if (!mods || !*mods)
 		return (-1);
 	mods++;
 	if (*mods == '*')
@@ -43,13 +47,19 @@ int		get_precision(char *mods, va_list arglist)
 	return (precision);
 }
 
+/*
+** get_minwidth
+** finds the min width in mods if any
+** returns the min width
+*/
+
 int		get_minwidth(char *mods, va_list arglist)
 {
 	int		minwidth;
 	int		count;
 	char	*minw;
 
-	count= 0;
+	count = 0;
 	if (!mods)
 		return (0);
 	while ((ft_isdigit(*mods) != 1 && *mods != '.' && *mods != '*' && *mods) ||
@@ -73,7 +83,8 @@ int		get_minwidth(char *mods, va_list arglist)
 }
 
 /*
-** WHERE 1 MEANS LEFT JUSTIFY AND 0 MEANS RIGHT JUSTIFY
+** get_justify
+** 1 MEANS LEFT JUSTIFY AND 0 MEANS RIGHT JUSTIFY
 */
 
 int		get_justify(char *mods)
@@ -86,6 +97,11 @@ int		get_justify(char *mods)
 	}
 	return (0);
 }
+
+/*
+** get_pad
+** returns the correct padding character
+*/
 
 char	get_pad(char *mods)
 {
@@ -104,6 +120,12 @@ char	get_pad(char *mods)
 		pad = ' ';
 	return (pad);
 }
+
+/*
+** get_indexof
+** finds the index of c in str
+** returns index or -1 if c does not exist in str
+*/
 
 int		get_indexof(char *str, char c)
 {

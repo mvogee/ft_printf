@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../ft_printf.h"
 
 char	*ft_strdup(char *str)
 {
-	int 	len;
+	int		len;
 	int		count;
 	char	*ret;
 

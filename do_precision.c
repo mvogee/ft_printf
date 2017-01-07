@@ -11,18 +11,22 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-//precision is actually performed before justifications
 
-static  char	*pad_copy(char* original, int sign, int pad, int totallen)
+/*
+** pad_copy
+** pads a copy of original with 0s
+** returns padded copy of original
+*/
+
+static char	*pad_copy(char *original, int sign, int pad, int totallen)
 {
 	char	*ret;
 	int		count;
 
 	count = 0;
 	ret = (char*)malloc(sizeof(char) * totallen);
-		if (!ret)
-			return (NULL);
+	if (!ret)
+		return (NULL);
 	if (sign)
 	{
 		ret[0] = '-';
@@ -31,7 +35,7 @@ static  char	*pad_copy(char* original, int sign, int pad, int totallen)
 	while (count - sign < pad)
 	{
 		ret[count] = '0';
-		count++;		
+		count++;
 	}
 	while (*original)
 	{
@@ -43,11 +47,21 @@ static  char	*pad_copy(char* original, int sign, int pad, int totallen)
 	return (ret);
 }
 
-char			*do_precision(char	*output, int precision)
+/*
+** do_precision
+** takes output and determines whether or not precision needs to be done
+** variables:
+** len = how many zeros will be added
+** precision = total length to allocate
+** minussign = flag for if there it is a negative number
+** returns new string with precision done if needed
+*/
+
+char		*do_precision(char *output, int precision)
 {
 	int		len;
 	int		count;
-	int 	minussign;
+	int		minussign;
 	char	*retoutp;
 
 	len = 0;
@@ -58,10 +72,9 @@ char			*do_precision(char	*output, int precision)
 	len = ft_strlen(output);
 	if (len < precision)
 	{
-		len = precision - len; // how many zeros we will add
-		precision += minussign; // total lenght to allocate
+		len = precision - len;
+		precision += minussign;
 		retoutp = pad_copy(output, minussign, len, precision);
-
 	}
 	if (minussign)
 		output--;

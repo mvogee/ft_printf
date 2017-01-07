@@ -12,6 +12,13 @@
 
 #include "ft_printf.h"
 
+/*
+** find_specifier_pos
+** finds the index of a specifer character
+** if an invalid specifer character occurs the negative index is returned
+** returns index of the specifer
+*/
+
 int		find_specifier_pos(char *format)
 {
 	int pos;
@@ -21,12 +28,19 @@ int		find_specifier_pos(char *format)
 	{
 		if (checkfor_all(format[pos]) == 0 || !format[pos])
 		{
-			return(pos * -1);
+			return (pos * -1);
 		}
 		pos++;
 	}
 	return (pos);
 }
+
+/*
+** moveto_specifer
+** moves format to the character after the specifer
+** or end of the string, whichever comes first
+** returns modified format
+*/
 
 char	*moveto_specifier(char *format)
 {

@@ -34,12 +34,12 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 		ret = ft_lltoa(va_arg(arglist, long));
 	if (!ret)
 		return (NULL);
-	if (ret[0] == '0' && ret[1] == '\0' && precision == 0) // dealing with weird case
+	if (ret[0] == '0' && ret[1] == '\0' && precision == 0)
 		ret[0] = 0;
 	return (ret);
 }
 
-int		spec_up_d(char *mods, va_list arglist)
+int			spec_up_d(char *mods, va_list arglist)
 {
 	int		precision;
 	int		minwidth;

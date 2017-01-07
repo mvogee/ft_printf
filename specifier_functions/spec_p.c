@@ -24,7 +24,7 @@ static char	*get_output(va_list arglist, int precision)
 	return (ret);
 }
 
-int		spec_p(char *mods, va_list arglist)
+int			spec_p(char *mods, va_list arglist)
 {
 	int		precision;
 	int		minwidth;

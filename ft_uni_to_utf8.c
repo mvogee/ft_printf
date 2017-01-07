@@ -14,7 +14,7 @@
 
 /*
 ** get_char_len
-** 1. if char can be encoded in 1 uft-8 byte char will be less than 128;
+** 1. if char can be encoded in 1 uft-8 byte char will be less than 128 1 << 7
 ** 2. if char can be encoded in 2 uft-8 bytes char will be less than 1<<11
 ** 3. if char can be encoded in 3 utf-8 bytes char will be less than 1<<16
 ** 4. if char can be encoded in 4 utf-8 bytes char will be less than 1<<21
@@ -41,7 +41,7 @@ static int		get_char_len(wchar_t c)
 /*
 ** char_conversion
 ** takes a pointer to allocated memory space b
-** takes character to conver
+** takes character to be converted
 ** takes len (how many bytes will be used to encode the character into)
 **
 ** 1. for the first byte we look at the furthest
@@ -49,11 +49,11 @@ static int		get_char_len(wchar_t c)
 ** with leading ones for how many bytes are used to encode;
 ** ex. (500>>6)|0xc0 = [1100 0111]
 ** 2. following bytes are shifted if needed untill the last byte
-** 0x3F is [0011 1111] so c&0x3f gives us two leading 0s in the byte
+** 0x3F is [0011 1111] so (c & 0x3f) gives us two leading 0s in the byte
 ** 0x80 is [1000 0000] so that will give us a final
 ** byte that looks like [10xx xxxx]
 ** 3. the final byte is set to NULL terminater
-** no return is needed because we are changing allocated memory space (heap).
+** no return is needed because we are changing allocated memory space b.
 */
 
 static void		char_conversion(unsigned char *b, wchar_t c, int len)
@@ -90,7 +90,7 @@ static void		char_conversion(unsigned char *b, wchar_t c, int len)
 ** returns char *
 */
 
-char		*ft_uni_utf8_char(wchar_t c)
+char			*ft_uni_utf8_char(wchar_t c)
 {
 	int				charlen;
 	unsigned char	*retptr;
@@ -101,7 +101,7 @@ char		*ft_uni_utf8_char(wchar_t c)
 	charlen = get_char_len(c);
 	if (charlen == 0)
 		return (NULL);
-	if (!(retchar = (unsigned char *) malloc(sizeof(char) * charlen + 1)))
+	if (!(retchar = (unsigned char *)malloc(sizeof(char) * charlen + 1)))
 		return (NULL);
 	retptr = retchar;
 	char_conversion(retptr, c, charlen);
@@ -119,7 +119,7 @@ char		*ft_uni_utf8_char(wchar_t c)
 ** characters into the the return string
 */
 
-char		*ft_uni_utf8_str(wchar_t *str)
+char			*ft_uni_utf8_str(wchar_t *str)
 {
 	char			*retstr;
 	char			*tmp;
@@ -145,8 +145,3 @@ char		*ft_uni_utf8_str(wchar_t *str)
 		return (NULL);
 	return (retstr);
 }
-
-
-
-
-

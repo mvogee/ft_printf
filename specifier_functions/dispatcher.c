@@ -12,7 +12,19 @@
 
 #include "../ft_printf.h"
 
-int get_dispatch(char speci)
+/*
+** ADDING A SPECIFIER?
+** add the specifier function to the end of the dispatch array
+** add the specifer character to the end of the specs string
+** dont forget to add the character to the checkfor_specifer in checkfor.c
+*/
+
+/*
+** get_dispatch
+** returns the index of specifer character
+*/
+
+int	get_dispatch(char speci)
 {
 	const char		*specs;
 	int				id;
@@ -24,7 +36,12 @@ int get_dispatch(char speci)
 	return (id);
 }
 
-int (*g_dispatcher(char *format, int specpos))(char *, va_list)
+/*
+** g_dispatcher
+** returns a function pointer for the corresponding specifer
+*/
+
+int	(*g_dispatcher(char *format, int specpos))(char *, va_list)
 {
 	int				type;
 	t_dispatch_ptr	dispatch_array[15];

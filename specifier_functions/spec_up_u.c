@@ -39,7 +39,7 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 	return (ret);
 }
 
-int		spec_up_u(char *mods, va_list arglist)
+int			spec_up_u(char *mods, va_list arglist)
 {
 	int		precision;
 	int		minwidth;

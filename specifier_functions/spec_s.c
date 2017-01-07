@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static char *do_string_precision(char *output, int precision)
+static char	*do_string_precision(char *output, int precision)
 {
 	int		len;
 	char	*ret;
@@ -28,7 +28,7 @@ static char *do_string_precision(char *output, int precision)
 	return (ret);
 }
 
-static char	*get_output(char *mods , va_list arglist)
+static char	*get_output(char *mods, va_list arglist)
 {
 	int		len;
 	char	*ret;
@@ -41,7 +41,7 @@ static char	*get_output(char *mods , va_list arglist)
 	return (ret);
 }
 
-int		spec_s(char *mods, va_list arglist)
+int			spec_s(char *mods, va_list arglist)
 {
 	int		precision;
 	int		minwidth;

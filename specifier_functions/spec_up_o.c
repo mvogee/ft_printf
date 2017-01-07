@@ -21,7 +21,8 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 	if (len == L)
 		ret = ft_itoa_base((unsigned long)va_arg(arglist, unsigned long), 8);
 	else if (len == LL)
-		ret = ft_itoa_base((unsigned long long)va_arg(arglist, unsigned long long), 8);
+		ret = ft_itoa_base((unsigned long long)
+			va_arg(arglist, unsigned long long), 8);
 	else if (len == J)
 		ret = ft_itoa_base((uintmax_t)va_arg(arglist, uintmax_t), 8);
 	else if (len == Z)
@@ -39,7 +40,7 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 	return (ret);
 }
 
-int		spec_up_o(char *mods, va_list arglist)
+int			spec_up_o(char *mods, va_list arglist)
 {
 	int		precision;
 	int		minwidth;

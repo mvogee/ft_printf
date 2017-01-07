@@ -12,9 +12,6 @@
 
 #include "../ft_printf.h"
 
-// -32769 short = max short wrap
-// -9223372036854775808 max long long no wrap 9223372036854775807
-// get minwidth is working
 static char	*get_output(char *mods, va_list arglist, int precision)
 {
 	int		len;
