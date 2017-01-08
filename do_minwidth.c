@@ -166,7 +166,7 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 	}
 	else
 		output = ft_strdup(tmp);
-	free(tmp);
-	free(original);
+	ft_memdel((void**)&tmp);
+	ft_memdel((void**)&original);
 	return (output);
 }

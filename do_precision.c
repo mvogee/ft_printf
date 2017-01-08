@@ -80,6 +80,6 @@ char		*do_precision(char *output, int precision)
 		output--;
 	if (len >= precision)
 		retoutp = ft_strdup(output);
-	free(output);
+	ft_memdel((void**)&output);
 	return (retoutp);
 }

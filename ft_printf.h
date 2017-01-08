@@ -101,6 +101,7 @@ char	*ft_utoa(uintmax_t num);
 char	*ft_itoa_base(uintmax_t n, int b);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memalloc(size_t size);
+void	ft_memdel(void **ap);
 /*
 **dispatcher
 */

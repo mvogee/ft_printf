@@ -24,7 +24,7 @@ static char	*do_string_precision(char *output, int precision)
 		ret = ft_strsub(output, 0, precision);
 	else
 		ret = ft_strdup(output);
-	free(output);
+	ft_memdel((void**)&output);
 	return (ret);
 }
 

@@ -134,11 +134,11 @@ char			*ft_uni_utf8_str(wchar_t *str)
 	while (str[index] && retstr)
 	{
 		tmp = ft_strdup(retstr);
-		free(retstr);
+		ft_memdel((void**)&retstr);
 		add = ft_uni_utf8_char(str[index]);
 		retstr = ft_strjoin(tmp, add);
-		free(tmp);
-		free(add);
+		ft_memdel((void**)&tmp);
+		ft_memdel((void**)&add);
 		index++;
 	}
 	if (!retstr)

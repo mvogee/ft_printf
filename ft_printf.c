@@ -24,7 +24,7 @@ int		printf_free(char *output)
 
 	len = ft_strlen(output);
 	write(1, output, len);
-	free(output);
+	ft_memdel((void**)&output);
 	return (len);
 }
 
@@ -60,7 +60,7 @@ int		parse_format(char *format, va_list arglist)
 	specifier_funciton = g_dispatcher(format, specpos);
 	ret += specifier_funciton(mods, arglist);
 	if (mods)
-		free(mods);
+		ft_memdel((void**)&mods);
 	return (ret);
 }
 
