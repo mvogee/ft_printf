@@ -1,4 +1,4 @@
-NAME = libftprintf
+NAME = libftprintf.a
 
 SRCS = ft_printf.c \
 		moveto.c	\
@@ -44,7 +44,7 @@ SRCS = ft_printf.c \
 
 OBJS = ft_printf.o \
 		moveto.o	\
-		parse_formats.o \
+		get_formats.o \
 		checkfor.o	\
 		get_args.o \
 		do_precision.o \
@@ -85,12 +85,16 @@ OBJS = ft_printf.o \
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -o
+CFLAGS = -Wall -Wextra -Werror -c
 
 all: $(NAME)
 
 $(NAME):
-		$(CC) $(CFLAGS) $(NAME) $(SRCS)
+		$(CC) $(CFLAGS) $(SRCS)
+		ar rc $(NAME) $(OBJS)
+		ranlib $(NAME)
+
+.PHONY : clean
 
 clean:
 	/bin/rm -f $(OBJS)
