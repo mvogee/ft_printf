@@ -101,7 +101,7 @@ char			*ft_uni_utf8_char(wchar_t c)
 	charlen = get_char_len(c);
 	if (charlen == 0)
 		return (NULL);
-	if (!(retchar = (unsigned char *)malloc(sizeof(char) * charlen + 1)))
+	if (!(retchar = (unsigned char *)ft_memalloc(charlen + 1)))
 		return (NULL);
 	retptr = retchar;
 	char_conversion(retptr, c, charlen);

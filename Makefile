@@ -40,6 +40,8 @@ SRCS = ft_printf.c \
 		libft_functions/ft_strjoin.c \
 		libft_functions/ft_utoa.c \
 		libft_functions/ft_itoa_base.c \
+		libft_functions/ft_bzero.c \
+		libft_functions/ft_memalloc.c \
 
 
 OBJS = ft_printf.o \
@@ -82,6 +84,8 @@ OBJS = ft_printf.o \
 		ft_strjoin.o \
 		ft_utoa.o \
 		ft_itoa_base.o \
+		ft_bzero.o \
+		ft_memalloc.o \
 
 CC = gcc
 

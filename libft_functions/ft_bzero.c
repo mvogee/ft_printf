@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utoa.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvogee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/05 16:02:48 by mvogee            #+#    #+#             */
-/*   Updated: 2017/01/05 16:02:49 by mvogee           ###   ########.fr       */
+/*   Created: 2017/01/07 23:43:19 by mvogee            #+#    #+#             */
+/*   Updated: 2017/01/07 23:43:20 by mvogee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-char		*ft_utoa(uintmax_t num)
+void	ft_bzero(void *s, size_t n)
 {
-	int			len;
-	uintmax_t	ntmp;
-	char		*retstr;
+	unsigned char *tmp;
 
-	ntmp = num;
-	len = 0;
-	while (ntmp / 10)
+	tmp = (unsigned char*)s;
+	while (n > 0)
 	{
-		len++;
-		ntmp /= 10;
+		*tmp = 0;
+		tmp++;
+		n--;
 	}
-	len++;
-	retstr = (char*)ft_memalloc(len + 1);
-	if (!retstr)
-		return (NULL);
-	retstr[len] = '\0';
-	while (len-- >= 0)
-	{
-		retstr[len] = num % 10 + '0';
-		num /= 10;
-	}
-	return (retstr);
 }

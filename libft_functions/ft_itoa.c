@@ -52,7 +52,7 @@ char			*ft_itoa(int n)
 		len++;
 		ntmp /= 10;
 	}
-	if (!(retstr = (char*)malloc(sizeof(char) * len + 1)))
+	if (!(retstr = (char*)ft_memalloc(len + 1)))
 		return (NULL);
 	else
 		add_chars(retstr, (long)n, len);

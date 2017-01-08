@@ -24,7 +24,7 @@ static char	*pad_copy(char *original, int sign, int pad, int totallen)
 	int		count;
 
 	count = 0;
-	ret = (char*)malloc(sizeof(char) * totallen);
+	ret = (char*)ft_memalloc(totallen);
 	if (!ret)
 		return (NULL);
 	if (sign)

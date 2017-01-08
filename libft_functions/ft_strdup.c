@@ -22,7 +22,7 @@ char	*ft_strdup(char *str)
 		return (NULL);
 	len = ft_strlen(str);
 	count = 0;
-	ret = (char*)malloc(sizeof(char) * len + 1);
+	ret = (char*)ft_memalloc(len + 1);
 	if (!ret)
 		return (NULL);
 	while (*str)

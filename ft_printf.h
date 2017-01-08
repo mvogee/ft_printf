@@ -99,6 +99,8 @@ char	*ft_strdup(char *str);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_utoa(uintmax_t num);
 char	*ft_itoa_base(uintmax_t n, int b);
+void	ft_bzero(void *s, size_t n);
+void	*ft_memalloc(size_t size);
 /*
 **dispatcher
 */

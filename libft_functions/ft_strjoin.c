@@ -20,7 +20,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2);
-	if (!(ret = (char*)malloc(sizeof(char) * len + 1)))
+	if (!(ret = (char*)ft_memalloc(len + 1)))
 		return (NULL);
 	ret[len] = '\0';
 	len = 0;

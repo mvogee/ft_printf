@@ -22,7 +22,7 @@ static char	*get_output(char *mods, va_list arglist)
 		ret = ft_uni_utf8_char(va_arg(arglist, wchar_t));
 	else
 	{
-		ret = (char*)malloc(sizeof(char) * 2);
+		ret = (char*)ft_memalloc(2);
 		if (!ret)
 			return (NULL);
 		ret[0] = va_arg(arglist, int);

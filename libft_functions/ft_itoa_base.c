@@ -28,7 +28,7 @@ char	*ft_itoa_base(uintmax_t n, int b)
 		ntmp /= b;
 	}
 	len++;
-	ret = (char*)malloc(sizeof(char) * len + 1);
+	ret = (char*)ft_memalloc(len + 1);
 	if (!ret)
 		return (0);
 	ret[len] = '\0';

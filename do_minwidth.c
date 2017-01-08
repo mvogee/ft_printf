@@ -58,7 +58,7 @@ static char	*do_justify_pad(char *original, int minwidth)
 	int		count;
 
 	count = 0;
-	output = (char*)malloc(sizeof(char) * minwidth + 1);
+	output = (char*)ft_memalloc(minwidth + 1);
 	if (!output)
 		return (NULL);
 	output[minwidth] = '\0';
@@ -89,7 +89,7 @@ static char	*pad_zero(char *original, int minwidth, char spec)
 	int		len;
 
 	count = 0;
-	if (!(output = (char*)malloc(sizeof(char) * minwidth + 1)))
+	if (!(output = (char*)ft_memalloc(minwidth + 1)))
 		return (NULL);
 	output[minwidth] = '\0';
 	if (spec == 'x' || spec == 'X')
@@ -129,7 +129,7 @@ static char	*do_pad(char *original, int minwidth, char *mods, char spec)
 	if (pad == '0' && (original[0] == '-' || original[0] == '+' ||
 		original[0] == ' ' || checkthrough_for(mods, '#')))
 		return (pad_zero(original, minwidth, spec));
-	if (!(output = (char*)malloc(sizeof(char) * minwidth + 1)))
+	if (!(output = (char*)ft_memalloc(minwidth + 1)))
 		return (NULL);
 	output[minwidth] = '\0';
 	output = finish_pad(original, output, pad, minwidth);
