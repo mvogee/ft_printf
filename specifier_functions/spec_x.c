@@ -52,7 +52,8 @@ int			spec_x(char *mods, va_list arglist)
 	output = get_output(mods, arglist, precision);
 	if (!output)
 		return (0);
-	if (output[0] == 0 && output[1] == '\0' && checkthrough_for(mods, '#'))
+	if ((output[0] == 0 || output[0] == '0') &&
+		output[1] == '\0' && checkthrough_for(mods, '#'))
 		mods[get_indexof(mods, '#')] = '_';
 	output = do_precision(output, precision);
 	if (!output)

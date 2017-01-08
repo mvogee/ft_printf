@@ -39,7 +39,7 @@ int			ft_atoi(const char *str)
 	count = 0;
 	sign = 1;
 	retval = 0;
-	if (ft_strlen((char*)str) == 0)
+	if (!str || ft_strlen((char*)str) == 0)
 		return (0);
 	while (!ft_isalnum(*str) && *str != '+' && *str != '-' && ft_isascii(*str))
 		str++;

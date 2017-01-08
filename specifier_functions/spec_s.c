@@ -38,6 +38,8 @@ static char	*get_output(char *mods, va_list arglist)
 		ret = ft_uni_utf8_str(va_arg(arglist, wchar_t *));
 	else
 		ret = ft_strdup(va_arg(arglist, char *));
+	if (ret == NULL)
+		ret = ft_strdup("(null)");
 	return (ret);
 }
 

@@ -106,7 +106,7 @@ int		read_format(char *format, va_list arglist)
 ** returns number of null characters given as arguments
 */
 
-int		check_char_nulls(char *format, va_list arglist)
+int		check_char_nulls(char *format, va_list copy)
 {
 	int			ret;
 	char		c;
@@ -117,16 +117,17 @@ int		check_char_nulls(char *format, va_list arglist)
 	{
 		while (*format && *format != '%')
 			format++;
-		if (*format == '%')
-			format = moveto_specifier(format);
+		(*format ? format++ : format);
+		while (checkfor_specifier(*format) != 1 && checkfor_all(*format) == 1)
+			format++;
 		if (*format && (*format == 'c' || *format == 'C'))
 		{
-			c = va_arg(arglist, int);
+			c = va_arg(copy, int);
 			if (c == 0 || !c)
 				ret++;
 		}
-		else
-			(void)va_arg(arglist, long long int);
+		else if (checkfor_specifier(*format) == 1 && *format != '%')
+			(void)va_arg(copy, long long int);
 	}
 	return (ret);
 }

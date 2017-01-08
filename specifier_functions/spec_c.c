@@ -44,6 +44,8 @@ int			spec_c(char *mods, va_list arglist)
 	if (checkthrough_for(mods, '.'))
 		mods[get_indexof(mods, '.')] = '_';
 	output = get_output(mods, arglist);
+	if (output[0] == '\0' && minwidth > 1)
+		minwidth--;
 	if (!output)
 		return (0);
 	output = do_minwidth(output, minwidth, mods, 'c');

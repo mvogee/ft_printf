@@ -27,9 +27,9 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 	else if (len == Z)
 		ret = ft_utoa((unsigned long long)va_arg(arglist, size_t));
 	else if (len == HH)
-		ret = ft_utoa((unsigned char)va_arg(arglist, unsigned long));
+		ret = ft_utoa((unsigned long)va_arg(arglist, unsigned long));
 	else if (len == H)
-		ret = ft_utoa((unsigned short)va_arg(arglist, unsigned long));
+		ret = ft_utoa((unsigned long)va_arg(arglist, unsigned long));
 	else
 		ret = ft_utoa((unsigned long)va_arg(arglist, unsigned long));
 	if (!ret)
