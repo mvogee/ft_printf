@@ -52,6 +52,8 @@ int			spec_up_o(char *mods, va_list arglist)
 	output = get_output(mods, arglist, precision);
 	if (!output)
 		return (0);
+	if (checkthrough_for(mods, '#') && precision > 0)
+		precision--;
 	output = do_precision(output, precision);
 	if (!output)
 		return (0);
