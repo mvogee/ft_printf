@@ -27,9 +27,9 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 	else if (len == Z)
 		ret = ft_lltoa(va_arg(arglist, size_t));
 	else if (len == HH)
-		ret = hh_spec(arglist);
+		ret = ft_lltoa((char)va_arg(arglist, int));
 	else if (len == H)
-		ret = h_spec(arglist);
+		ret = ft_lltoa((short)va_arg(arglist, int));
 	else
 		ret = ft_itoa(va_arg(arglist, int));
 	if (!ret)

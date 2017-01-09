@@ -35,7 +35,7 @@ static int	givennull(char *output, int minwidth, char *mods)
 	return (retlen);
 }
 
-int		spec_up_c(char *mods, va_list arglist)
+int			spec_up_c(char *mods, va_list arglist)
 {
 	int		precision;
 	int		minwidth;

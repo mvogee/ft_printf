@@ -28,7 +28,7 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 	else if (len == Z)
 		ret = ft_itoa_base((unsigned long long)va_arg(arglist, size_t), 8);
 	else if (len == HH)
-		ret = ft_itoa_base((unsigned char)va_arg(arglist, unsigned long), 8);
+		ret = ft_itoa_base((unsigned short)va_arg(arglist, unsigned long), 8);
 	else if (len == H)
 		ret = ft_itoa_base((unsigned short)va_arg(arglist, unsigned long), 8);
 	else

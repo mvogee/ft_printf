@@ -62,9 +62,6 @@ int		get_indexof(char *str, char c);
 **get args
 */
 int		get_len(char *mods);
-int		make_short(int i);
-char	*h_spec(va_list arglist);
-char	*hh_spec(va_list arglist);
 /*
 **do_precision
 */
