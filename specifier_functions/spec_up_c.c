@@ -47,7 +47,7 @@ int			spec_up_c(char *mods, va_list arglist)
 	if (checkthrough_for(mods, '.'))
 		mods[get_indexof(mods, '.')] = '_';
 	output = ft_uni_utf8_char(va_arg(arglist, wchar_t));
-	if (!output || (output[0] == '\0' && minwidth > 1))
+	if (!output || output[0] == '\0')
 		retlen = givennull(output, minwidth - 1, mods);
 	else
 	{
