@@ -31,6 +31,29 @@ static char	*get_output(char *mods, va_list arglist)
 	return (ret);
 }
 
+static int	special_print(char *output)
+{
+	int	len;
+
+	len = ft_strlen(output);
+	write(1, output, len);
+	write(1, "\0", 1);
+	ft_memdel((void**)&output);
+	return (len);
+}
+
+static int	givennull(char *output, int minwidth, char *mods)
+{
+	int retlen;
+
+	retlen = 0;
+	output = do_minwidth(output, minwidth, mods, 'c');
+	if (!output)
+		return (0);
+	retlen = special_print(output);
+	return (retlen);
+}
+
 int			spec_c(char *mods, va_list arglist)
 {
 	int		precision;
@@ -44,13 +67,16 @@ int			spec_c(char *mods, va_list arglist)
 	if (checkthrough_for(mods, '.'))
 		mods[get_indexof(mods, '.')] = '_';
 	output = get_output(mods, arglist);
+	if (!output)
+		return (0);
 	if (output[0] == '\0' && minwidth > 1)
-		minwidth--;
-	if (!output)
-		return (0);
-	output = do_minwidth(output, minwidth, mods, 'c');
-	if (!output)
-		return (0);
-	retlen = printf_free(output);
+		retlen = givennull(output, minwidth - 1, mods);
+	else
+	{
+		output = do_minwidth(output, minwidth, mods, 'c');
+		if (!output)
+			return (0);
+		retlen = printf_free(output);
+	}
 	return (retlen);
 }
