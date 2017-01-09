@@ -19,7 +19,8 @@ static int	special_print(char *output)
 	len = ft_strlen(output);
 	write(1, output, len);
 	write(1, "\0", 1);
-	ft_memdel((void**)&output);
+	if (output)
+		ft_memdel((void**)&output);
 	return (len);
 }
 
@@ -29,8 +30,6 @@ static int	givennull(char *output, int minwidth, char *mods)
 
 	retlen = 0;
 	output = do_minwidth(output, minwidth, mods, 'c');
-	if (!output)
-		return (0);
 	retlen = special_print(output);
 	return (retlen);
 }
@@ -48,9 +47,7 @@ int			spec_up_c(char *mods, va_list arglist)
 	if (checkthrough_for(mods, '.'))
 		mods[get_indexof(mods, '.')] = '_';
 	output = ft_uni_utf8_char(va_arg(arglist, wchar_t));
-	if (!output)
-		return (0);
-	if (output[0] == '\0' && minwidth > 1)
+	if (!output || (output[0] == '\0' && minwidth > 1))
 		retlen = givennull(output, minwidth - 1, mods);
 	else
 	{
