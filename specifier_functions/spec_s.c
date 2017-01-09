@@ -57,8 +57,6 @@ int			spec_s(char *mods, va_list arglist)
 		return (0);
 	if (precision != -1)
 		output = do_string_precision(output, precision);
-	if (!output)
-		return (0);
 	if (checkthrough_for(mods, '.'))
 		mods[get_indexof(mods, '.')] = '_';
 	output = do_minwidth(output, minwidth, mods, 's');
