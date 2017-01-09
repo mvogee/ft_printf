@@ -32,7 +32,7 @@ char	*ft_itoa_base(uintmax_t n, int b)
 	if (!ret)
 		return (0);
 	ret[len] = '\0';
-	while (len-- >= 0)
+	while (--len >= 0)
 	{
 		ret[len] = nums[n % b];
 		n /= b;

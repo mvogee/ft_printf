@@ -30,7 +30,7 @@ char		*ft_utoa(uintmax_t num)
 	if (!retstr)
 		return (NULL);
 	retstr[len] = '\0';
-	while (len-- >= 0)
+	while (--len >= 0)
 	{
 		retstr[len] = num % 10 + '0';
 		num /= 10;
