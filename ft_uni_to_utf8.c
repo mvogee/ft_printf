@@ -128,6 +128,8 @@ char			*ft_uni_utf8_str(wchar_t *str)
 
 	index = 1;
 	retstr = NULL;
+	if (str && str[0] == '\0')
+		return (ft_strdup("\0"));
 	if (!str)
 		return (NULL);
 	retstr = ft_uni_utf8_char(str[0]);
