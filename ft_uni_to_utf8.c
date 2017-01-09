@@ -131,7 +131,7 @@ char			*ft_uni_utf8_str(wchar_t *str)
 	if (!str)
 		return (NULL);
 	retstr = ft_uni_utf8_char(str[0]);
-	while (str[index] && retstr)
+	while (retstr && str[index])
 	{
 		tmp = ft_strdup(retstr);
 		ft_memdel((void**)&retstr);
