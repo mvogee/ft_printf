@@ -92,14 +92,14 @@ static char	*pad_zero(char *original, int minwidth, char spec)
 	if (!(output = (char*)ft_memalloc(minwidth + 1)))
 		return (NULL);
 	output[minwidth] = '\0';
-	if (original && (spec == 'x' || spec == 'X'))
+	if (original && (spec == 'x' || spec == 'X' || spec == 'p'))
 	{
 		output[0] = original[0];
 		output[1] = original[1];
 		count += 2;
 		original += 2;
 	}
-	else if (original && !(spec == 'x' || spec == 'X'))
+	else if (original && !(spec == 'x' || spec == 'X' || spec == 'p'))
 	{
 		output[count] = original[0];
 		original++;
@@ -127,7 +127,7 @@ static char	*do_pad(char *original, int minwidth, char *mods, char spec)
 	count = 0;
 	len = minwidth - ft_strlen(original);
 	if (pad == '0' && original && (original[0] == '-' || original[0] == '+' ||
-		original[0] == ' ' || checkthrough_for(mods, '#')))
+		original[0] == ' ' || checkthrough_for(mods, '#') || spec == 'p'))
 		return (pad_zero(original, minwidth, spec));
 	if (!(output = (char*)ft_memalloc(minwidth + 1)))
 		return (NULL);
