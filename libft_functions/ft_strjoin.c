@@ -24,13 +24,13 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	ret[len] = '\0';
 	len = 0;
-	while (*s1 && s1)
+	while (s1 && *s1)
 	{
 		ret[len] = *s1;
 		len++;
 		s1++;
 	}
-	while (*s2 && s2)
+	while (s2 && *s2)
 	{
 		ret[len] = *s2;
 		len++;
