@@ -40,8 +40,6 @@ int			spec_up_s(char *mods, va_list arglist)
 	output = ft_uni_utf8_str(va_arg(arglist, wchar_t *));
 	if (!output)
 		output = ft_strdup("(null)");
-	if (output[0] == '\0')
-		return (0);
 	if (precision != -1)
 		output = do_string_precision(output, precision);
 	if (checkthrough_for(mods, '.'))

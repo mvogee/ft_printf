@@ -53,7 +53,7 @@ int			spec_s(char *mods, va_list arglist)
 	minwidth = get_minwidth(mods, arglist);
 	precision = get_precision(mods, arglist);
 	output = get_output(mods, arglist);
-	if (!output || output[0] == '\0')
+	if (!output)
 		return (0);
 	if (precision != -1)
 		output = do_string_precision(output, precision);
