@@ -39,10 +39,9 @@ int		get_precision(char *mods, va_list arglist)
 		while (ft_isdigit(mods[count]) == 1 && mods[count])
 			count++;
 		precis = ft_strsub(mods, 0, count);
-		if (!precis)
-			precision = 0;
-		else
-			precision = ft_atoi(precis);
+		precision = ft_atoi(precis);
+		if (precis)
+			free(precis);
 	}
 	return (precision);
 }
@@ -74,10 +73,9 @@ int		get_minwidth(char *mods, va_list arglist)
 		while (ft_isdigit(mods[count]) == 1 && mods[count])
 			count++;
 		minw = ft_strsub(mods, 0, count);
-		if (!minw)
-			minwidth = 0;
-		else
-			minwidth = ft_atoi(minw);
+		minwidth = ft_atoi(minw);
+		if (minw)
+			free(minw);
 	}
 	return (minwidth);
 }
