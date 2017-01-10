@@ -28,13 +28,13 @@ static int		get_char_len(wchar_t c)
 
 	bytes = 0;
 	if (c < (1 << 7))
-		bytes = 1;
+		bytes = (1 < MB_CUR_MAX ? 1 : MB_CUR_MAX);
 	else if (c < (1 << 11))
-		bytes = 2;
+		bytes = (2 < MB_CUR_MAX ? 2 : MB_CUR_MAX);
 	else if (c < (1 << 16))
-		bytes = 3;
+		bytes = (3 < MB_CUR_MAX ? 3 : MB_CUR_MAX);
 	else if (c < (1 << 21))
-		bytes = 4;
+		bytes = (4 < MB_CUR_MAX ? 4 : MB_CUR_MAX);
 	return (bytes);
 }
 
