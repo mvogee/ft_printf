@@ -24,7 +24,7 @@ static char	*pad_copy(char *original, int sign, int pad, int totallen)
 	int		count;
 
 	count = 0;
-	ret = (char*)ft_memalloc(totallen);
+	ret = (char*)pf_memalloc(totallen);
 	if (!ret)
 		return (NULL);
 	if (sign)
@@ -69,7 +69,7 @@ char		*do_precision(char *output, int precision)
 	minussign = (output[0] == '-' ? 1 : 0);
 	if (minussign)
 		output++;
-	len = ft_strlen(output);
+	len = pf_strlen(output);
 	if (len < precision)
 	{
 		len = precision - len;
@@ -79,7 +79,7 @@ char		*do_precision(char *output, int precision)
 	if (minussign)
 		output--;
 	if (len >= precision)
-		retoutp = ft_strdup(output);
-	ft_memdel((void**)&output);
+		retoutp = pf_strdup(output);
+	pf_memdel((void**)&output);
 	return (retoutp);
 }

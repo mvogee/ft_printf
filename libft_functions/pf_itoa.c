@@ -1,39 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvogee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/05 16:02:48 by mvogee            #+#    #+#             */
-/*   Updated: 2017/01/05 16:02:49 by mvogee           ###   ########.fr       */
+/*   Created: 2016/12/14 21:18:57 by mvogee            #+#    #+#             */
+/*   Updated: 2017/01/16 23:33:38 by mvogee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-char		*ft_utoa(uintmax_t num)
+static void		add_chars(char *retstr, long n, int len)
 {
-	int			len;
-	uintmax_t	ntmp;
-	char		*retstr;
+	if (n < 0)
+	{
+		retstr[0] = '-';
+		n *= -1;
+		len--;
+		while (len > 0 && retstr[len] != '-')
+		{
+			retstr[len] = n % 10 + '0';
+			n = n / 10;
+			len--;
+		}
+	}
+	else
+	{
+		while (len > 0)
+		{
+			len--;
+			retstr[len] = n % 10 + '0';
+			n = n / 10;
+		}
+	}
+}
 
-	ntmp = num;
-	len = 0;
+char			*pf_itoa(int n)
+{
+	int		len;
+	char	*retstr;
+	int		ntmp;
+
+	len = 1;
+	ntmp = n;
+	if (ntmp < 0)
+		len++;
 	while (ntmp / 10)
 	{
 		len++;
 		ntmp /= 10;
 	}
-	len++;
-	retstr = (char*)ft_memalloc(len + 1);
-	if (!retstr)
+	if (!(retstr = (char*)pf_memalloc(len + 1)))
 		return (NULL);
+	else
+		add_chars(retstr, (long)n, len);
 	retstr[len] = '\0';
-	while (--len >= 0)
-	{
-		retstr[len] = num % 10 + '0';
-		num /= 10;
-	}
 	return (retstr);
 }

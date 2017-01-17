@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvogee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/07 23:40:21 by mvogee            #+#    #+#             */
-/*   Updated: 2017/01/07 23:40:22 by mvogee           ###   ########.fr       */
+/*   Created: 2017/01/08 23:12:10 by mvogee            #+#    #+#             */
+/*   Updated: 2017/01/16 23:36:46 by mvogee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	*ft_memalloc(size_t size)
+void	pf_memdel(void **ap)
 {
-	unsigned char	*mem;
-
-	if (size <= 0)
-		return (NULL);
-	mem = (unsigned char*)malloc(sizeof(mem) * size);
-	if (!mem)
-		return (NULL);
-	ft_bzero(mem, size);
-	return (mem);
+	free(*ap);
+	*ap = NULL;
 }

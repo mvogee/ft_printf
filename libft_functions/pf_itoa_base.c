@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvogee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/14 15:05:50 by mvogee            #+#    #+#             */
-/*   Updated: 2016/12/14 15:05:52 by mvogee           ###   ########.fr       */
+/*   Created: 2017/01/05 17:52:42 by mvogee            #+#    #+#             */
+/*   Updated: 2017/01/16 23:35:11 by mvogee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char	*pf_itoa_base(uintmax_t n, int b)
 {
-	char	*substr;
-	size_t	count;
+	int			len;
+	uintmax_t	ntmp;
+	char		*ret;
+	char		*nums;
 
-	count = 0;
-	if (len == 0 || !s)
-		return (NULL);
-	if (!(substr = (char*)ft_memalloc(len + 1)))
-		return (NULL);
-	while (count < len)
+	nums = "0123456789abcdef";
+	ntmp = n;
+	len = 0;
+	while (ntmp / b)
 	{
-		substr[count] = s[count + start];
-		count++;
+		len++;
+		ntmp /= b;
 	}
-	substr[count] = '\0';
-	return (substr);
+	len++;
+	ret = (char*)pf_memalloc(len + 1);
+	if (!ret)
+		return (0);
+	ret[len] = '\0';
+	while (--len >= 0)
+	{
+		ret[len] = nums[n % b];
+		n /= b;
+	}
+	return (ret);
 }

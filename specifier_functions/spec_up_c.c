@@ -16,11 +16,11 @@ static int	special_print(char *output)
 {
 	int	len;
 
-	len = ft_strlen(output);
+	len = pf_strlen(output);
 	write(1, output, len);
 	write(1, "\0", 1);
 	if (output)
-		ft_memdel((void**)&output);
+		pf_memdel((void**)&output);
 	return (len);
 }
 

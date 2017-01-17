@@ -19,19 +19,19 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 
 	len = get_len(mods);
 	if (len == L)
-		ret = ft_lltoa(va_arg(arglist, long));
+		ret = pf_lltoa(va_arg(arglist, long));
 	else if (len == LL)
-		ret = ft_lltoa(va_arg(arglist, long long));
+		ret = pf_lltoa(va_arg(arglist, long long));
 	else if (len == J)
-		ret = ft_lltoa(va_arg(arglist, intmax_t));
+		ret = pf_lltoa(va_arg(arglist, intmax_t));
 	else if (len == Z)
-		ret = ft_lltoa(va_arg(arglist, size_t));
+		ret = pf_lltoa(va_arg(arglist, size_t));
 	else if (len == HH)
-		ret = ft_lltoa((char)va_arg(arglist, int));
+		ret = pf_lltoa((char)va_arg(arglist, int));
 	else if (len == H)
-		ret = ft_lltoa((short)va_arg(arglist, int));
+		ret = pf_lltoa((short)va_arg(arglist, int));
 	else
-		ret = ft_itoa(va_arg(arglist, int));
+		ret = pf_itoa(va_arg(arglist, int));
 	if (!ret)
 		return (NULL);
 	if (ret[0] == '0' && ret[1] == '\0' && precision == 0)

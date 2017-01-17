@@ -19,20 +19,20 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 
 	len = get_len(mods);
 	if (len == L)
-		ret = ft_itoa_base((unsigned long)va_arg(arglist, unsigned long), 8);
+		ret = pf_itoa_base((unsigned long)va_arg(arglist, unsigned long), 8);
 	else if (len == LL)
-		ret = ft_itoa_base((unsigned long long)
+		ret = pf_itoa_base((unsigned long long)
 			va_arg(arglist, unsigned long long), 8);
 	else if (len == J)
-		ret = ft_itoa_base((uintmax_t)va_arg(arglist, uintmax_t), 8);
+		ret = pf_itoa_base((uintmax_t)va_arg(arglist, uintmax_t), 8);
 	else if (len == Z)
-		ret = ft_itoa_base((unsigned long long)va_arg(arglist, size_t), 8);
+		ret = pf_itoa_base((unsigned long long)va_arg(arglist, size_t), 8);
 	else if (len == HH)
-		ret = ft_itoa_base((unsigned short)va_arg(arglist, unsigned long), 8);
+		ret = pf_itoa_base((unsigned short)va_arg(arglist, unsigned long), 8);
 	else if (len == H)
-		ret = ft_itoa_base((unsigned short)va_arg(arglist, unsigned long), 8);
+		ret = pf_itoa_base((unsigned short)va_arg(arglist, unsigned long), 8);
 	else
-		ret = ft_itoa_base((unsigned long)va_arg(arglist, unsigned long), 8);
+		ret = pf_itoa_base((unsigned long)va_arg(arglist, unsigned long), 8);
 	if (!ret)
 		return (NULL);
 	if (ret[0] == '0' && ret[1] == '\0' && precision == 0)

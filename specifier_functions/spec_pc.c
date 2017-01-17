@@ -24,7 +24,7 @@ int		spec_pc(char *mods, va_list arglist)
 	precision = 0;
 	if (checkthrough_for(mods, '.'))
 		mods[get_indexof(mods, '.')] = '_';
-	output = ft_strdup("%");
+	output = pf_strdup("%");
 	if (!output)
 		return (0);
 	output = do_minwidth(output, minwidth, mods, '%');

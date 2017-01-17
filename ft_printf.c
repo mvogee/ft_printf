@@ -22,9 +22,9 @@ int		printf_free(char *output)
 {
 	int	len;
 
-	len = ft_strlen(output);
+	len = pf_strlen(output);
 	write(1, output, len);
-	ft_memdel((void**)&output);
+	pf_memdel((void**)&output);
 	return (len);
 }
 
@@ -49,18 +49,18 @@ int		parse_format(char *format, va_list arglist)
 		specpos *= (specpos < 0 ? -1 : 1);
 		if ((checkfor_all(format[specpos]) == 0 && format[specpos] != '\0'))
 		{
-			mods = (!format[specpos] ? NULL : ft_strsub(format, 0, specpos));
+			mods = (!format[specpos] ? NULL : pf_strsub(format, 0, specpos));
 			return (spec_invalid(mods, get_minwidth(mods, arglist),
 				format[specpos]));
 		}
 	}
 	if (!format[specpos])
 		return (0);
-	mods = (specpos == 0 ? NULL : ft_strsub(format, 0, specpos));
+	mods = (specpos == 0 ? NULL : pf_strsub(format, 0, specpos));
 	specifier_funciton = g_dispatcher(format, specpos);
 	ret += specifier_funciton(mods, arglist);
 	if (mods)
-		ft_memdel((void**)&mods);
+		pf_memdel((void**)&mods);
 	return (ret);
 }
 

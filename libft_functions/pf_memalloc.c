@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvogee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/15 11:08:52 by mvogee            #+#    #+#             */
-/*   Updated: 2016/12/15 11:08:53 by mvogee           ###   ########.fr       */
+/*   Created: 2017/01/07 23:40:21 by mvogee            #+#    #+#             */
+/*   Updated: 2017/01/16 23:36:28 by mvogee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c)
+#include "../ft_printf.h"
+
+void	*pf_memalloc(size_t size)
 {
-	if (c && c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	unsigned char	*mem;
+
+	if (size <= 0)
+		return (NULL);
+	mem = (unsigned char*)malloc(sizeof(mem) * size);
+	if (!mem)
+		return (NULL);
+	pf_bzero(mem, size);
+	return (mem);
 }

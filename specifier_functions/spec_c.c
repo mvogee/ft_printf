@@ -22,7 +22,7 @@ static char	*get_output(char *mods, va_list arglist)
 		ret = ft_uni_utf8_char(va_arg(arglist, wchar_t));
 	else
 	{
-		ret = (char*)ft_memalloc(2);
+		ret = (char*)pf_memalloc(2);
 		if (!ret)
 			return (NULL);
 		ret[0] = va_arg(arglist, int);
@@ -35,11 +35,11 @@ static int	special_print(char *output)
 {
 	int	len;
 
-	len = ft_strlen(output);
+	len = pf_strlen(output);
 	write(1, output, len);
 	write(1, "\0", 1);
 	if (output)
-		ft_memdel((void**)&output);
+		pf_memdel((void**)&output);
 	return (len);
 }
 

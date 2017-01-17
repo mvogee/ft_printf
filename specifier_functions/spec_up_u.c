@@ -19,19 +19,19 @@ static char	*get_output(char *mods, va_list arglist, int precision)
 
 	len = get_len(mods);
 	if (len == L)
-		ret = ft_utoa((unsigned long)va_arg(arglist, unsigned long));
+		ret = pf_utoa((unsigned long)va_arg(arglist, unsigned long));
 	else if (len == LL)
-		ret = ft_utoa((unsigned long long)va_arg(arglist, unsigned long long));
+		ret = pf_utoa((unsigned long long)va_arg(arglist, unsigned long long));
 	else if (len == J)
-		ret = ft_utoa((uintmax_t)va_arg(arglist, uintmax_t));
+		ret = pf_utoa((uintmax_t)va_arg(arglist, uintmax_t));
 	else if (len == Z)
-		ret = ft_utoa((unsigned long long)va_arg(arglist, size_t));
+		ret = pf_utoa((unsigned long long)va_arg(arglist, size_t));
 	else if (len == HH)
-		ret = ft_utoa((unsigned long)va_arg(arglist, unsigned long));
+		ret = pf_utoa((unsigned long)va_arg(arglist, unsigned long));
 	else if (len == H)
-		ret = ft_utoa((unsigned long)va_arg(arglist, unsigned long));
+		ret = pf_utoa((unsigned long)va_arg(arglist, unsigned long));
 	else
-		ret = ft_utoa((unsigned long)va_arg(arglist, unsigned long));
+		ret = pf_utoa((unsigned long)va_arg(arglist, unsigned long));
 	if (!ret)
 		return (NULL);
 	if (ret[0] == '0' && ret[1] == '\0' && precision == 0)

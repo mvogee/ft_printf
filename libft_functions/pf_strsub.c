@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvogee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/07 10:51:53 by mvogee            #+#    #+#             */
-/*   Updated: 2017/01/16 23:13:24 by mvogee           ###   ########.fr       */
+/*   Created: 2016/12/14 15:05:50 by mvogee            #+#    #+#             */
+/*   Updated: 2017/01/16 23:38:31 by mvogee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*pf_strsub(char const *s, unsigned int start, size_t len)
 {
-	int		len;
-	char	*ret;
+	char	*substr;
+	size_t	count;
 
-	if (!s1 && !s2)
+	count = 0;
+	if (len == 0 || !s)
 		return (NULL);
-	len = ft_strlen((char*)s1) + ft_strlen((char*)s2);
-	if (!(ret = (char*)ft_memalloc(len + 1)))
+	if (!(substr = (char*)pf_memalloc(len + 1)))
 		return (NULL);
-	ret[len] = '\0';
-	len = 0;
-	while (s1 && *s1)
+	while (count < len)
 	{
-		ret[len] = *s1;
-		len++;
-		s1++;
+		substr[count] = s[count + start];
+		count++;
 	}
-	while (s2 && *s2)
-	{
-		ret[len] = *s2;
-		len++;
-		s2++;
-	}
-	return (ret);
+	substr[count] = '\0';
+	return (substr);
 }

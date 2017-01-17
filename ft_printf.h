@@ -6,7 +6,7 @@
 /*   By: mvogee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 23:00:02 by mvogee            #+#    #+#             */
-/*   Updated: 2017/01/16 23:11:37 by mvogee           ###   ########.fr       */
+/*   Updated: 2017/01/16 23:41:43 by mvogee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,21 +84,21 @@ char	*ft_uni_utf8_str(wchar_t *str);
 /*
 **libft_functions
 */
-char	*ft_strsub(char const *s, unsigned int start, size_t len);
-char	*ft_itoa(int n);
-int		ft_atoi(const char *str);
-size_t	ft_strlen(char *str);
-int		ft_isalnum(int c);
-int		ft_isascii(int c);
-int		ft_isdigit(int c);
-char	*ft_lltoa(long long int n);
-char	*ft_strdup(const char *s1);
-char	*ft_strjoin(const char *s1, const char *s2);
-char	*ft_utoa(uintmax_t num);
-char	*ft_itoa_base(uintmax_t n, int b);
-void	ft_bzero(void *s, size_t n);
-void	*ft_memalloc(size_t size);
-void	ft_memdel(void **ap);
+char	*pf_strsub(char const *s, unsigned int start, size_t len);
+char	*pf_itoa(int n);
+int		pf_atoi(const char *str);
+size_t	pf_strlen(char *str);
+int		pf_isalnum(int c);
+int		pf_isascii(int c);
+int		pf_isdigit(int c);
+char	*pf_lltoa(long long int n);
+char	*pf_strdup(const char *s1);
+char	*pf_strjoin(const char *s1, const char *s2);
+char	*pf_utoa(uintmax_t num);
+char	*pf_itoa_base(uintmax_t n, int b);
+void	pf_bzero(void *s, size_t n);
+void	*pf_memalloc(size_t size);
+void	pf_memdel(void **ap);
 /*
 **dispatcher
 */

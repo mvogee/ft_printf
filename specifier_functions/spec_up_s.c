@@ -17,14 +17,14 @@ static char	*do_string_precision(char *output, int precision)
 	int		len;
 	char	*ret;
 
-	len = ft_strlen(output);
+	len = pf_strlen(output);
 	if (!output)
 		return (NULL);
 	if (precision < len)
-		ret = ft_strsub(output, 0, precision);
+		ret = pf_strsub(output, 0, precision);
 	else
-		ret = ft_strdup(output);
-	ft_memdel((void**)&output);
+		ret = pf_strdup(output);
+	pf_memdel((void**)&output);
 	return (ret);
 }
 
@@ -39,7 +39,7 @@ int			spec_up_s(char *mods, va_list arglist)
 	precision = get_precision(mods, arglist);
 	output = ft_uni_utf8_str(va_arg(arglist, wchar_t *));
 	if (!output)
-		output = ft_strdup("(null)");
+		output = pf_strdup("(null)");
 	if (precision != -1)
 		output = do_string_precision(output, precision);
 	if (checkthrough_for(mods, '.'))

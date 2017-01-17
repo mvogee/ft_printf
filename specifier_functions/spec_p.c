@@ -16,7 +16,7 @@ static char	*get_output(va_list arglist, int precision)
 {
 	char	*ret;
 
-	ret = ft_itoa_base((uintmax_t)va_arg(arglist, uintmax_t), 16);
+	ret = pf_itoa_base((uintmax_t)va_arg(arglist, uintmax_t), 16);
 	if (!ret)
 		return (NULL);
 	if (ret[0] == '0' && ret[1] == '\0' && precision == 0)

@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvogee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/15 11:01:00 by mvogee            #+#    #+#             */
-/*   Updated: 2016/12/15 11:02:28 by mvogee           ###   ########.fr       */
+/*   Created: 2017/01/05 16:02:48 by mvogee            #+#    #+#             */
+/*   Updated: 2017/01/16 23:39:10 by mvogee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-size_t	ft_strlen(char *str)
+char		*pf_utoa(uintmax_t num)
 {
-	size_t	len;
+	int			len;
+	uintmax_t	ntmp;
+	char		*retstr;
 
+	ntmp = num;
 	len = 0;
-	if (!str)
-		return (0);
-	while (*str)
+	while (ntmp / 10)
 	{
 		len++;
-		str++;
+		ntmp /= 10;
 	}
-	return (len);
+	len++;
+	retstr = (char*)pf_memalloc(len + 1);
+	if (!retstr)
+		return (NULL);
+	retstr[len] = '\0';
+	while (--len >= 0)
+	{
+		retstr[len] = num % 10 + '0';
+		num /= 10;
+	}
+	return (retstr);
 }

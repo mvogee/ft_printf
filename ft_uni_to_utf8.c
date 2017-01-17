@@ -101,7 +101,7 @@ char			*ft_uni_utf8_char(wchar_t c)
 	charlen = get_char_len(c);
 	if (charlen == 0)
 		return (NULL);
-	if (!(retchar = (unsigned char *)ft_memalloc(charlen + 1)))
+	if (!(retchar = (unsigned char *)pf_memalloc(charlen + 1)))
 		return (NULL);
 	retptr = retchar;
 	char_conversion(retptr, c, charlen);
@@ -129,18 +129,18 @@ char			*ft_uni_utf8_str(wchar_t *str)
 	index = 1;
 	retstr = NULL;
 	if (str && str[0] == '\0')
-		return (ft_strdup("\0"));
+		return (pf_strdup("\0"));
 	if (!str)
 		return (NULL);
 	retstr = ft_uni_utf8_char(str[0]);
 	while (retstr && str[index])
 	{
-		tmp = ft_strdup(retstr);
-		ft_memdel((void**)&retstr);
+		tmp = pf_strdup(retstr);
+		pf_memdel((void**)&retstr);
 		add = ft_uni_utf8_char(str[index]);
-		retstr = ft_strjoin(tmp, add);
-		ft_memdel((void**)&tmp);
-		ft_memdel((void**)&add);
+		retstr = pf_strjoin(tmp, add);
+		pf_memdel((void**)&tmp);
+		pf_memdel((void**)&add);
 		index++;
 	}
 	if (!retstr)

@@ -43,14 +43,14 @@ char	*hexoct_sign(char spec, char *original)
 	char *ret;
 
 	if (spec == 'X')
-		ret = ft_strjoin("0X", original);
+		ret = pf_strjoin("0X", original);
 	else if (spec == 'x' || spec == 'p')
-		ret = ft_strjoin("0x", original);
+		ret = pf_strjoin("0x", original);
 	else if ((spec == 'o' || spec == 'O') &&
 		!(original[0] == '0' && original[1] == '\0'))
-		ret = ft_strjoin("0", original);
+		ret = pf_strjoin("0", original);
 	else
-		ret = ft_strdup(original);
+		ret = pf_strdup(original);
 	return (ret);
 }
 
@@ -72,8 +72,8 @@ char	*do_sign(char *original, char *mods)
 	else
 		s = "-";
 	if (sign && sign != '-')
-		ret = ft_strjoin(s, original);
+		ret = pf_strjoin(s, original);
 	else
-		ret = ft_strdup(original);
+		ret = pf_strdup(original);
 	return (ret);
 }

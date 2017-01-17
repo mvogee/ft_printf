@@ -36,10 +36,10 @@ int		get_precision(char *mods, va_list arglist)
 		precision = va_arg(arglist, int);
 	else
 	{
-		while (ft_isdigit(mods[count]) == 1 && mods[count])
+		while (pf_isdigit(mods[count]) == 1 && mods[count])
 			count++;
-		precis = ft_strsub(mods, 0, count);
-		precision = ft_atoi(precis);
+		precis = pf_strsub(mods, 0, count);
+		precision = pf_atoi(precis);
 		if (precis)
 			free(precis);
 	}
@@ -61,7 +61,7 @@ int		get_minwidth(char *mods, va_list arglist)
 	count = 0;
 	if (!mods)
 		return (0);
-	while ((ft_isdigit(*mods) != 1 && *mods != '.' && *mods != '*' && *mods) ||
+	while ((pf_isdigit(*mods) != 1 && *mods != '.' && *mods != '*' && *mods) ||
 		*mods == '0')
 		mods++;
 	if (!*mods || *mods == '.')
@@ -70,10 +70,10 @@ int		get_minwidth(char *mods, va_list arglist)
 		minwidth = va_arg(arglist, int);
 	else
 	{
-		while (ft_isdigit(mods[count]) == 1 && mods[count])
+		while (pf_isdigit(mods[count]) == 1 && mods[count])
 			count++;
-		minw = ft_strsub(mods, 0, count);
-		minwidth = ft_atoi(minw);
+		minw = pf_strsub(mods, 0, count);
+		minwidth = pf_atoi(minw);
 		if (minw)
 			free(minw);
 	}
@@ -108,7 +108,7 @@ char	get_pad(char *mods)
 	pad = ' ';
 	if (checkthrough_for(mods, '.'))
 		return (pad);
-	while (*mods && (ft_isdigit(*mods) != 1 || *mods == '0'))
+	while (*mods && (pf_isdigit(*mods) != 1 || *mods == '0'))
 	{
 		if (*mods == '0')
 			pad = '0';

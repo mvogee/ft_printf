@@ -31,7 +31,7 @@ static char	*finish_pad(char *original, char *output, char pad, int minwidth)
 		count = 2;
 	else
 		count = 0;
-	len = minwidth - ft_strlen(original);
+	len = minwidth - pf_strlen(original);
 	while (count < minwidth)
 	{
 		if (count < len)
@@ -58,7 +58,7 @@ static char	*do_justify_pad(char *original, int minwidth)
 	int		count;
 
 	count = 0;
-	output = (char*)ft_memalloc(minwidth + 1);
+	output = (char*)pf_memalloc(minwidth + 1);
 	if (!output)
 		return (NULL);
 	output[minwidth] = '\0';
@@ -89,7 +89,7 @@ static char	*pad_zero(char *original, int minwidth, char spec)
 	int		len;
 
 	count = 0;
-	if (!(output = (char*)ft_memalloc(minwidth + 1)))
+	if (!(output = (char*)pf_memalloc(minwidth + 1)))
 		return (NULL);
 	output[minwidth] = '\0';
 	if (original && (spec == 'x' || spec == 'X' || spec == 'p'))
@@ -105,7 +105,7 @@ static char	*pad_zero(char *original, int minwidth, char spec)
 		original++;
 		count++;
 	}
-	len = minwidth - ft_strlen(original);
+	len = minwidth - pf_strlen(original);
 	output = finish_pad(original, output, '0', minwidth);
 	return (output);
 }
@@ -125,11 +125,11 @@ static char	*do_pad(char *original, int minwidth, char *mods, char spec)
 
 	pad = get_pad(mods);
 	count = 0;
-	len = minwidth - ft_strlen(original);
+	len = minwidth - pf_strlen(original);
 	if (pad == '0' && original && (original[0] == '-' || original[0] == '+' ||
 		original[0] == ' ' || checkthrough_for(mods, '#') || spec == 'p'))
 		return (pad_zero(original, minwidth, spec));
-	if (!(output = (char*)ft_memalloc(minwidth + 1)))
+	if (!(output = (char*)pf_memalloc(minwidth + 1)))
 		return (NULL);
 	output[minwidth] = '\0';
 	output = finish_pad(original, output, pad, minwidth);
@@ -155,8 +155,8 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 	else if (spec == 'd' || spec == 'D' || spec == 'i')
 		tmp = do_sign(original, mods);
 	else
-		tmp = ft_strdup(original);
-	len = ft_strlen(tmp);
+		tmp = pf_strdup(original);
+	len = pf_strlen(tmp);
 	if (len < minwidth)
 	{
 		if (checkthrough_for(mods, '-'))
@@ -165,8 +165,8 @@ char		*do_minwidth(char *original, int minwidth, char *mods, char spec)
 			output = do_pad(tmp, minwidth, mods, spec);
 	}
 	else
-		output = ft_strdup(tmp);
-	ft_memdel((void**)&tmp);
-	ft_memdel((void**)&original);
+		output = pf_strdup(tmp);
+	pf_memdel((void**)&tmp);
+	pf_memdel((void**)&original);
 	return (output);
 }

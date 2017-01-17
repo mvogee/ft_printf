@@ -1,41 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvogee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/05 17:52:42 by mvogee            #+#    #+#             */
-/*   Updated: 2017/01/05 17:52:43 by mvogee           ###   ########.fr       */
+/*   Created: 2016/12/15 11:09:46 by mvogee            #+#    #+#             */
+/*   Updated: 2017/01/16 23:34:00 by mvogee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
-
-char	*ft_itoa_base(uintmax_t n, int b)
+int		pf_isalnum(int c)
 {
-	int			len;
-	uintmax_t	ntmp;
-	char		*ret;
-	char		*nums;
-
-	nums = "0123456789abcdef";
-	ntmp = n;
-	len = 0;
-	while (ntmp / b)
-	{
-		len++;
-		ntmp /= b;
-	}
-	len++;
-	ret = (char*)ft_memalloc(len + 1);
-	if (!ret)
-		return (0);
-	ret[len] = '\0';
-	while (--len >= 0)
-	{
-		ret[len] = nums[n % b];
-		n /= b;
-	}
-	return (ret);
+	if (c && ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')
+		|| (c >= 'A' && c <= 'Z')))
+		return (1);
+	return (0);
 }

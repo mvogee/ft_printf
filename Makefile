@@ -28,21 +28,21 @@ SRCS = ft_printf.c \
 		specifier_functions/spec_x.c \
 		specifier_functions/spec_invalid.c \
 		\
-		libft_functions/ft_strsub.c \
-		libft_functions/ft_itoa.c \
-		libft_functions/ft_atoi.c \
-		libft_functions/ft_strlen.c \
-		libft_functions/ft_isascii.c \
-		libft_functions/ft_isalnum.c \
-		libft_functions/ft_isdigit.c \
-		libft_functions/ft_lltoa.c \
-		libft_functions/ft_strdup.c \
-		libft_functions/ft_strjoin.c \
-		libft_functions/ft_utoa.c \
-		libft_functions/ft_itoa_base.c \
-		libft_functions/ft_bzero.c \
-		libft_functions/ft_memalloc.c \
-		libft_functions/ft_memdel.c \
+		libft_functions/pf_strsub.c \
+		libft_functions/pf_itoa.c \
+		libft_functions/pf_atoi.c \
+		libft_functions/pf_strlen.c \
+		libft_functions/pf_isascii.c \
+		libft_functions/pf_isalnum.c \
+		libft_functions/pf_isdigit.c \
+		libft_functions/pf_lltoa.c \
+		libft_functions/pf_strdup.c \
+		libft_functions/pf_strjoin.c \
+		libft_functions/pf_utoa.c \
+		libft_functions/pf_itoa_base.c \
+		libft_functions/pf_bzero.c \
+		libft_functions/pf_memalloc.c \
+		libft_functions/pf_memdel.c \
 
 
 OBJS = ft_printf.o \
@@ -73,21 +73,21 @@ OBJS = ft_printf.o \
 		spec_x.o \
 		spec_invalid.o \
 		\
-		ft_strsub.o \
-		ft_itoa.o \
-		ft_atoi.o \
-		ft_strlen.o \
-		ft_isascii.o \
-		ft_isalnum.o \
-		ft_isdigit.o \
-		ft_lltoa.o \
-		ft_strdup.o \
-		ft_strjoin.o \
-		ft_utoa.o \
-		ft_itoa_base.o \
-		ft_bzero.o \
-		ft_memalloc.o \
-		ft_memdel.o \
+		pf_strsub.o \
+		pf_itoa.o \
+		pf_atoi.o \
+		pf_strlen.o \
+		pf_isascii.o \
+		pf_isalnum.o \
+		pf_isdigit.o \
+		pf_lltoa.o \
+		pf_strdup.o \
+		pf_strjoin.o \
+		pf_utoa.o \
+		pf_itoa_base.o \
+		pf_bzero.o \
+		pf_memalloc.o \
+		pf_memdel.o \
 
 CC = gcc
 

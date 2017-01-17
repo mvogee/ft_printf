@@ -6,7 +6,7 @@
 /*   By: mvogee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 21:55:36 by mvogee            #+#    #+#             */
-/*   Updated: 2016/12/14 21:55:37 by mvogee           ###   ########.fr       */
+/*   Updated: 2017/01/16 23:31:26 by mvogee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static	int	too_big_check(int retval, int count, int sign)
 	return (retval * sign);
 }
 
-int			ft_atoi(const char *str)
+int			pf_atoi(const char *str)
 {
 	int		retval;
 	int		count;
@@ -39,9 +39,9 @@ int			ft_atoi(const char *str)
 	count = 0;
 	sign = 1;
 	retval = 0;
-	if (!str || ft_strlen((char*)str) == 0)
+	if (!str || pf_strlen((char*)str) == 0)
 		return (0);
-	while (!ft_isalnum(*str) && *str != '+' && *str != '-' && ft_isascii(*str))
+	while (!pf_isalnum(*str) && *str != '+' && *str != '-' && pf_isascii(*str))
 		str++;
 	if (*str == '-' || *str == '+')
 	{
@@ -50,7 +50,7 @@ int			ft_atoi(const char *str)
 	}
 	while (*str == '0')
 		str++;
-	while (ft_isdigit(str[count]) != 0)
+	while (pf_isdigit(str[count]) != 0)
 	{
 		retval = (retval * 10) + (int)str[count] - '0';
 		count++;
