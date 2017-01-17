@@ -6,7 +6,7 @@
 /*   By: mvogee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 23:00:02 by mvogee            #+#    #+#             */
-/*   Updated: 2017/01/06 23:00:07 by mvogee           ###   ########.fr       */
+/*   Updated: 2017/01/16 23:11:37 by mvogee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 char	*ft_lltoa(long long int n);
-char	*ft_strdup(char *str);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strdup(const char *s1);
+char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_utoa(uintmax_t num);
 char	*ft_itoa_base(uintmax_t n, int b);
 void	ft_bzero(void *s, size_t n);

@@ -6,20 +6,20 @@
 /*   By: mvogee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/07 10:51:53 by mvogee            #+#    #+#             */
-/*   Updated: 2017/01/07 10:51:54 by mvogee           ###   ########.fr       */
+/*   Updated: 2017/01/16 23:13:24 by mvogee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	int		len;
 	char	*ret;
 
 	if (!s1 && !s2)
 		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
+	len = ft_strlen((char*)s1) + ft_strlen((char*)s2);
 	if (!(ret = (char*)ft_memalloc(len + 1)))
 		return (NULL);
 	ret[len] = '\0';
