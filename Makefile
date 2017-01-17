@@ -97,7 +97,7 @@ all: $(NAME)
 
 $(NAME):
 		$(CC) $(CFLAGS) $(SRCS)
-		ar rc $(NAME) $(OBJS)
+		ar -rc $(NAME) $(OBJS)
 		ranlib $(NAME)
 
 .PHONY : clean
